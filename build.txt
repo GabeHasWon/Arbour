@@ -1,0 +1,7 @@
+displayName = Arbour
+author = GabeHasWon
+version = 1.0
+dllReferences = StructureHelper
+hideCode = false
+hideResources = false
+includeSource = true
