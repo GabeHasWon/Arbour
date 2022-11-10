@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.Tiles.Custom;
 
+[TileTag(TileTags.NeedsTopAnchor)]
 internal class Microbirch : ModTile
 {
     public static bool KillingMicrobirch = false;
@@ -116,7 +117,7 @@ internal class Microbirch : ModTile
 
     public static void SpawnAt(Point p) => SpawnAt(p.X, p.Y);
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak) => false;
-    public override void NumDust(int i, int j, bool fail, ref int num) => 0;
+    public override void NumDust(int i, int j, bool fail, ref int num) => num = 0;
 
     public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
     {

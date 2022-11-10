@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.Tiles.Blocks;
 
+[TileTag(TileTags.NeedsTopAnchor)]
 internal class ArborVines : ModTile
 {
     public override void SetStaticDefaults()

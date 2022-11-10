@@ -27,7 +27,7 @@ namespace Arbour.Content.Items
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = false;
-			Item.createTile = ModContent.TileType<ArborGrass>();
+			Item.createTile = ModContent.TileType<FloorFoliage2x2>();
 		}
 
         public override bool? UseItem(Player player)
@@ -38,12 +38,12 @@ namespace Arbour.Content.Items
             //tile.LiquidAmount = 255;
             //tile.LiquidType = LiquidID.Water;
 
-            Microbirch.SpawnAt(Main.MouseWorld.ToTileCoordinates());
+            //Microbirch.SpawnAt(Main.MouseWorld.ToTileCoordinates());
 
-            //Point pos = Main.MouseWorld.ToTileCoordinates();
-            //int len = Main.rand.Next(6, 18);
-            //for (int i = 0; i < len; ++i)
-            //	WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
+            Point pos = Main.MouseWorld.ToTileCoordinates();
+            int len = Main.rand.Next(6, 18);
+            for (int i = 0; i < len; ++i)
+                WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
             return true;
         }
     }

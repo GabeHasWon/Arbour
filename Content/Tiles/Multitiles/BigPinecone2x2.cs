@@ -1,5 +1,4 @@
 ﻿using Terraria;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -15,6 +14,7 @@ class BigPinecone2x2 : ModTile
 
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.CoordinateHeights = new int[2] { 16, 18 };
+        TileObjectData.newTile.RandomStyleRange = 2;
         TileObjectData.addTile(Type);
     }
 

@@ -4,7 +4,7 @@ using Terraria.ObjectData;
 
 namespace Arbour.Content.Tiles.Multitiles;
 
-class FloorFoliage2x1 : ModTile
+class FloorFoliage2x2 : ModTile
 {
     public override void SetStaticDefaults()
     {
@@ -12,10 +12,9 @@ class FloorFoliage2x1 : ModTile
         Main.tileLavaDeath[Type] = false;
         Main.tileFrameImportant[Type] = true;
 
-        TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
-        TileObjectData.newTile.CoordinateHeights = new int[1] { 18 };
-        TileObjectData.newTile.RandomStyleRange = 3;
-        TileObjectData.newTile.StyleHorizontal = false;
+        TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+        TileObjectData.newTile.CoordinateHeights = new int[2] { 16, 18 };
+        TileObjectData.newTile.RandomStyleRange = 1;
         TileObjectData.addTile(Type);
     }
 }
