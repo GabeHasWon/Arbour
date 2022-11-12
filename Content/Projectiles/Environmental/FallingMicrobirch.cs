@@ -81,7 +81,7 @@ namespace Arbour.Content.Projectiles.Environmental
                 if (item.Hitbox.Intersects(hitbox))
                 {
                     string[] deathTexts = new string[] { $"{item.name} cut a tree above their head.", $"A tree landed on {item.name}'s head.", $"{item.name} discovered gravity...again." };
-                    item.Hurt(PlayerDeathReason.ByCustomReason(Main.rand.Next(deathTexts)), Main.DamageVar(12), 0, false, false, false);
+                    item.Hurt(PlayerDeathReason.ByCustomReason(Main.rand.Next(deathTexts)), Main.DamageVar(12), 0);
 
                     KillMe();
                     return true;

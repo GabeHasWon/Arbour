@@ -6,26 +6,25 @@ using System.Collections.Generic;
 
 namespace Arbour.Common.Globals.Tiles
 {
-    internal class TileTagLoader : ILoadable
+    internal class TileTagLoader : ModSystem
     {
         public Dictionary<int, TileTagAttribute> AttributesByID = new();
 
-        public void Load(Mod mod)
+        public static Action<TileTagLoader> OnLoad = null;
+
+        public override void PostSetupContent()
         {
             var types = GetType().Assembly.GetTypes().Where(x => !x.IsAbstract && Attribute.IsDefined(x, typeof(TileTagAttribute)) && typeof(ModTile).IsAssignableFrom(x));
 
             foreach (var item in types)
             {
                 var attr = Attribute.GetCustomAttribute(item, typeof(TileTagAttribute)) as TileTagAttribute;
-                int tileType = ModLoader.GetMod("Arbour").Find<ModTile>(item.Name).Type;
+                int tileType = Mod.Find<ModTile>(item.Name).Type;
 
                 AttributesByID.Add(tileType, attr);
             }
-        }
 
-        public void Unload()
-        {
-            AttributesByID.Clear();
+            OnLoad?.Invoke(this);
         }
     }
 }

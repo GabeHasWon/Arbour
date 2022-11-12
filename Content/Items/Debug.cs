@@ -1,3 +1,4 @@
+using Arbour.Common.WorldGeneration;
 using Arbour.Content.Tiles.Blocks;
 using Arbour.Content.Tiles.Custom;
 using Arbour.Content.Tiles.Multitiles;
@@ -19,15 +20,15 @@ namespace Arbour.Content.Items
 		{
 			Item.width = 40;
 			Item.height = 40;
-			Item.useTime = 20;
-			Item.useAnimation = 20;
+			Item.useTime = 15;
+			Item.useAnimation = 15;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 6;
 			Item.value = 10000;
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = false;
-			Item.createTile = ModContent.TileType<FloorFoliage2x2>();
+			Item.createTile = ModContent.TileType<BigPinecone2x2>();
 		}
 
         public override bool? UseItem(Player player)
@@ -41,9 +42,11 @@ namespace Arbour.Content.Items
             //Microbirch.SpawnAt(Main.MouseWorld.ToTileCoordinates());
 
             Point pos = Main.MouseWorld.ToTileCoordinates();
-            int len = Main.rand.Next(6, 18);
-            for (int i = 0; i < len; ++i)
-                WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
+            //int len = Main.rand.Next(6, 18);
+            //for (int i = 0; i < len; ++i)
+            //    WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
+
+            ArborGeneration.PebblePond(pos.X, pos.Y);
             return true;
         }
     }

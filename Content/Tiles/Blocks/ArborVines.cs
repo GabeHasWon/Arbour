@@ -30,4 +30,13 @@ internal class ArborVines : ModTile
 
         return false;
     }
+
+    public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
+    {
+        fail = false;
+
+        Tile below = Main.tile[i, j + 1];
+        if (below.HasTile && below.TileType == Type)
+            WorldGen.KillTile(i, j + 1);
+    }
 }
