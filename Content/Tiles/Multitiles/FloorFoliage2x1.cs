@@ -1,4 +1,6 @@
 ﻿using Terraria;
+using Terraria.GameContent.Metadata;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -12,10 +14,14 @@ class FloorFoliage2x1 : ModTile
         Main.tileLavaDeath[Type] = false;
         Main.tileFrameImportant[Type] = true;
 
+        TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
+        TileID.Sets.SwaysInWindBasic[Type] = true;
+
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
         TileObjectData.newTile.CoordinateHeights = new int[1] { 18 };
         TileObjectData.newTile.RandomStyleRange = 3;
         TileObjectData.newTile.StyleHorizontal = false;
+        TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
         TileObjectData.addTile(Type);
     }
 }

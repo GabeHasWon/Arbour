@@ -39,4 +39,11 @@ internal class ArborVines : ModTile
         if (below.HasTile && below.TileType == Type)
             WorldGen.KillTile(i, j + 1);
     }
+
+    public override void RandomUpdate(int i, int j)
+    {
+        Tile tile = Main.tile[i, j + 1];
+        if (!tile.HasTile && Main.rand.NextBool(8))
+            WorldGen.PlaceTile(i, j + 1, ModContent.TileType<ArborVines>(), true);
+    }
 }

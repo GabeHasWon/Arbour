@@ -28,7 +28,7 @@ namespace Arbour.Content.Items
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = false;
-			Item.createTile = ModContent.TileType<BigPinecone2x2>();
+			Item.createTile = ModContent.TileType<ArborGrass>();
 		}
 
         public override bool? UseItem(Player player)
@@ -41,12 +41,12 @@ namespace Arbour.Content.Items
 
             //Microbirch.SpawnAt(Main.MouseWorld.ToTileCoordinates());
 
-            Point pos = Main.MouseWorld.ToTileCoordinates();
+            //Point pos = Main.MouseWorld.ToTileCoordinates();
             //int len = Main.rand.Next(6, 18);
             //for (int i = 0; i < len; ++i)
             //    WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
 
-            ArborGeneration.PebblePond(pos.X, pos.Y);
+            //ArborGeneration.PebblePond(pos.X, pos.Y);
             return true;
         }
     }
