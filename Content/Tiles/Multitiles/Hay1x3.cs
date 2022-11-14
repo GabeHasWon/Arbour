@@ -9,8 +9,9 @@ class Hay1x3 : ModTile
     public override void SetStaticDefaults()
     {
         Main.tileSolid[Type] = false;
-        Main.tileLavaDeath[Type] = false;
+        Main.tileLavaDeath[Type] = true;
         Main.tileFrameImportant[Type] = true;
+        Main.tileCut[Type] = true;
 
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
         TileObjectData.newTile.Height = 3;

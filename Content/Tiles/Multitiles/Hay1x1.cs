@@ -11,8 +11,9 @@ class Hay1x1 : ModTile
     public override void SetStaticDefaults()
     {
         Main.tileSolid[Type] = false;
-        Main.tileLavaDeath[Type] = false;
+        Main.tileLavaDeath[Type] = true;
         Main.tileFrameImportant[Type] = true;
+        Main.tileCut[Type] = true;
 
         TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
         TileID.Sets.SwaysInWindBasic[Type] = true;

@@ -1,4 +1,4 @@
-﻿using Arbour.Content.Items;
+﻿using Arbour.Content.Items.Placeable;
 using Arbour.Content.Projectiles.Info;
 using Microsoft.Xna.Framework;
 using System;
@@ -55,6 +55,7 @@ namespace Arbour.Content.Projectiles.Environmental
             Vector2 realOffset = centeredOffset.RotatedBy(Projectile.rotation); //Rotate the offset to fit the visual
             Vector2 realPos = center + realOffset + Projectile.velocity; //Get the real position by combining all of the above
 
+            //Local method for killing the current TileDrawState, with gores and all
             void KillMe()
             {
                 States.RemoveAt(index);
@@ -69,10 +70,11 @@ namespace Arbour.Content.Projectiles.Environmental
                     Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<MicrobirchAcorn>());
                 }
 
-                Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ItemID.Wood, Main.rand.Next(1, 3));
+                if (!Main.rand.NextBool(5))
+                    Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<BirchWoodBlock>());
             }
 
-            if (Collision.SolidCollision(realPos, tileDrawState.frame.X, tileDrawState.frame.Y))
+            if (Collision.SolidCollision(realPos, tileDrawState.frame.X, tileDrawState.frame.Y)) //Tile collision check
             {
                 KillMe();
                 return true;
@@ -103,8 +105,8 @@ namespace Arbour.Content.Projectiles.Environmental
                 }
             }
 
-            if (Main.rand.NextBool(22) && tileDrawState.overrideTex is not null)
-                Gore.NewGore(Terraria.Entity.InheritSource(Projectile), realPos, Vector2.Zero, GoreID.TreeLeaf_VanityTreeYellowWillow);
+            if (Main.rand.NextBool(22) && tileDrawState.overrideTex is not null) //If I'm a leafy part falling, spawn leaves
+                Gore.NewGore(Terraria.Entity.InheritSource(Projectile), realPos, Vector2.Zero, Mod.Find<ModGore>("OrangeLeaf").Type);
             return false;
         }
 

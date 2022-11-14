@@ -9,7 +9,7 @@ class FloorFoliage2x2 : ModTile
     public override void SetStaticDefaults()
     {
         Main.tileSolid[Type] = false;
-        Main.tileLavaDeath[Type] = false;
+        Main.tileLavaDeath[Type] = true;
         Main.tileFrameImportant[Type] = true;
 
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);

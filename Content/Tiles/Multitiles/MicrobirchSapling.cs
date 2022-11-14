@@ -31,7 +31,7 @@ class MicrobirchSapling : ModTile
 
     public override void RandomUpdate(int i, int j)
     {
-        if (Main.rand.NextBool(1))
+        if (Main.rand.NextBool(10))
         {
             Tile tile = Main.tile[i, j];
             tile.HasTile = false;
