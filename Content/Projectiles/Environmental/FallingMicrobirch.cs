@@ -1,4 +1,5 @@
-﻿using Arbour.Content.Projectiles.Info;
+﻿using Arbour.Content.Items;
+using Arbour.Content.Projectiles.Info;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -62,10 +63,13 @@ namespace Arbour.Content.Projectiles.Environmental
                     Dust.NewDust(realPos, tileDrawState.frame.X, tileDrawState.frame.Y, DustID.Pumpkin);
 
                 if (tileDrawState.overrideTex is not null)
+                {
                     for (int i = 0; i < 4; ++i)
-                        Gore.NewGore(Terraria.Entity.InheritSource(Projectile), realPos, Vector2.Zero, GoreID.TreeLeaf_VanityTreeYellowWillow);
+                        Gore.NewGore(Terraria.Entity.InheritSource(Projectile), realPos, Vector2.Zero, Mod.Find<ModGore>("OrangeLeaf").Type);
+                    Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<MicrobirchAcorn>());
+                }
 
-                Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ItemID.Wood);
+                Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ItemID.Wood, Main.rand.Next(1, 3));
             }
 
             if (Collision.SolidCollision(realPos, tileDrawState.frame.X, tileDrawState.frame.Y))

@@ -37,10 +37,11 @@ public class ArborGrass : ModTile
     public override void RandomUpdate(int i, int j)
     {
 		Tile tile = Main.tile[i, j + 1];
+
 		if (!tile.HasTile)
 		{
 			if (Main.rand.NextBool(220))
-				Microbirch.SpawnAt(i, j + 1);
+				WorldGen.PlaceTile(i, j + 1, ModContent.TileType<MicrobirchSapling>(), true);
 			else if (Main.rand.NextBool(10))
 				WorldGen.PlaceTile(i, j + 1, ModContent.TileType<ArborVines>(), true);
 		}

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ObjectData;
 
@@ -6,6 +7,9 @@ namespace Arbour.Content.Tiles
 {
     internal class TileHelper
     {
+        public static Vector2 TileOffset => Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
+        public static Vector2 TileCustomPosition(int i, int j, Vector2? off = null) => (new Vector2(i, j) * 16) - Main.screenPosition - (off ?? new Vector2(0)) + TileOffset;
+
         public static bool TryPlaceProperly(int i, int j, int type, bool quiet = false, bool mute = true, int style = -1, bool forceIfPossible = false)
         {
             TileObjectData data = TileObjectData.GetTileData(type, style == -1 ? 0 : style, 0);
@@ -54,5 +58,11 @@ namespace Arbour.Content.Tiles
         }
 
         public static bool AreaClear(int i, int j, int width, int height, bool onlySolids = true) => TilesInRectangle(i, j, width, height, onlySolids) == 0;
+
+        public static void FindAbove(int x, ref int y)
+        {
+            while (!Main.tile[x, y].HasTile)
+                y--;
+        }
     }
 }

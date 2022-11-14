@@ -54,6 +54,9 @@ internal class Microbirch : ModTile
             {
                 t.TileFrameX = TreeBottomFrame;
                 lastWasBottom = true;
+
+                for (int j = 0; j < 4; ++j)
+                    Gore.NewGore(new EntitySource_TileUpdate(x, y + i), new Vector2(x, y + i) * 16, Vector2.Zero, ModContent.GetInstance<Arbour>().Find<ModGore>("OrangeLeaf").Type, 1f);
             }
         }
     }
@@ -122,14 +125,12 @@ internal class Microbirch : ModTile
     public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
     {
         Tile tile = Main.tile[i, j];
-        Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
-        Vector2 drawPos = new Vector2(i, j) * 16 - Main.screenPosition;
 
         if (tile.TileFrameX == TreeBottomFrame)
         {
             Texture2D tex = Mod.Assets.Request<Texture2D>("Content/Tiles/Custom/MicrobirchBottom").Value;
 
-            spriteBatch.Draw(tex, drawPos + zero - new Vector2(16, 0), new Rectangle(Main.tile[i, j - 1].TileFrameX / 18 * 50, 0, 48, 42), Lighting.GetColor(i, j));
+            TileSwaySystem.DrawTreeSway(i, j, tex, new Rectangle(Main.tile[i, j - 1].TileFrameX / 18 * 50, 0, 48, 42), new Vector2(6, 0), new Vector2(24, 0), true);
             return false;
         }
         return true;

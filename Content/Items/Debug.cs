@@ -2,6 +2,7 @@ using Arbour.Common.WorldGeneration;
 using Arbour.Content.Tiles.Blocks;
 using Arbour.Content.Tiles.Custom;
 using Arbour.Content.Tiles.Multitiles;
+using Arbour.Content.Walls;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -27,9 +28,10 @@ namespace Arbour.Content.Items
 			Item.value = 10000;
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
-			Item.autoReuse = false;
-			Item.createTile = ModContent.TileType<ArborGrass>();
-		}
+			Item.autoReuse = true;
+            Item.createTile = ModContent.TileType<MicrobirchSapling>();
+            //Item.createWall = ModContent.WallType<ArborLeafWall>();
+        }
 
         public override bool? UseItem(Player player)
         {
@@ -41,12 +43,12 @@ namespace Arbour.Content.Items
 
             //Microbirch.SpawnAt(Main.MouseWorld.ToTileCoordinates());
 
-            //Point pos = Main.MouseWorld.ToTileCoordinates();
+            Point pos = Main.MouseWorld.ToTileCoordinates();
             //int len = Main.rand.Next(6, 18);
             //for (int i = 0; i < len; ++i)
             //    WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
 
-            //ArborGeneration.PebblePond(pos.X, pos.Y);
+            //ArborGeneration.BuildSingleIsland(pos.X, pos.Y);
             return true;
         }
     }
