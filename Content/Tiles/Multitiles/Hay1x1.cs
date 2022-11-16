@@ -23,5 +23,7 @@ class Hay1x1 : ModTile
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
         TileObjectData.addTile(Type);
+
+        AddMapEntry(new Microsoft.Xna.Framework.Color(181, 152, 90));
     }
 }

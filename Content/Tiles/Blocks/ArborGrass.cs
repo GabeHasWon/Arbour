@@ -1,10 +1,8 @@
-using Arbour.Content.Tiles.Custom;
 using Arbour.Content.Tiles.Multitiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 
 namespace Arbour.Content.Tiles.Blocks;
 
@@ -20,7 +18,7 @@ public class ArborGrass : ModTile
 		TileID.Sets.Grass[Type] = true;
 		TileID.Sets.Conversion.Grass[Type] = true;
 		
-		AddMapEntry(new Color(104, 156, 70));
+		AddMapEntry(new Color(198, 98, 43));
 
 		ItemDrop = ItemID.DirtBlock;
 	}
@@ -46,13 +44,13 @@ public class ArborGrass : ModTile
 				WorldGen.PlaceTile(i, j + 1, ModContent.TileType<ArborVines>(), true);
 		}
 
-		if (Main.rand.NextBool(14) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
+		if (Main.rand.NextBool(14) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
 			return;
 
-		if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
+		if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
 			return;
 
-		if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x1>(), forceIfPossible: false))
+		if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x1>(), forceIfPossible: false))
 			return;
 	}
 }

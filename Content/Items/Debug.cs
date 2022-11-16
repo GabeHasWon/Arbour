@@ -1,10 +1,12 @@
 using Arbour.Common.WorldGeneration;
+using Arbour.Content.Tiles;
 using Arbour.Content.Tiles.Blocks;
 using Arbour.Content.Tiles.Custom;
 using Arbour.Content.Tiles.Multitiles;
 using Arbour.Content.Walls;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,8 +30,8 @@ namespace Arbour.Content.Items
 			Item.value = 10000;
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
-			Item.autoReuse = true;
-            Item.createTile = ModContent.TileType<MicrobirchSapling>();
+			Item.autoReuse = false;
+            //Item.createTile = ModContent.TileType<MicrobirchSapling>();
             //Item.createWall = ModContent.WallType<ArborLeafWall>();
         }
 
@@ -47,7 +49,7 @@ namespace Arbour.Content.Items
             //int len = Main.rand.Next(6, 18);
             //for (int i = 0; i < len; ++i)
             //    WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
-
+            TileHelper.TryPlaceProperly(pos, ModContent.TileType<Hay1x3>(), forceIfPossible: true);
             //ArborGeneration.BuildSingleIsland(pos.X, pos.Y);
             return true;
         }

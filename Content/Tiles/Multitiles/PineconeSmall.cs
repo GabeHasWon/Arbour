@@ -16,5 +16,7 @@ class PineconeSmall : ModTile
         TileObjectData.newTile.RandomStyleRange = 3;
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.addTile(Type);
+
+        AddMapEntry(new Microsoft.Xna.Framework.Color(94, 42, 24));
     }
 }

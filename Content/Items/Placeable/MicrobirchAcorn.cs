@@ -1,11 +1,10 @@
 using Arbour.Content.Tiles.Multitiles;
 using Terraria.ModLoader;
 
-namespace Arbour.Content.Items.Placeable
+namespace Arbour.Content.Items.Placeable;
+
+public class MicrobirchAcorn : ModItem
 {
-    public class MicrobirchAcorn : ModItem
-	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Can only be planted on ceilings");
-		public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<MicrobirchSapling>());
-	}
+	public override void SetStaticDefaults() => Tooltip.SetDefault("Can only be planted on ceilings");
+	public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<MicrobirchSapling>());
 }

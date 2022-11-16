@@ -27,11 +27,15 @@ class MicrobirchSapling : ModTile
         TileObjectData.newTile.AnchorBottom = default;
         TileObjectData.newTile.AnchorTop = new Terraria.DataStructures.AnchorData(AnchorType.SolidBottom | AnchorType.SolidTile, 1, 0);
         TileObjectData.addTile(Type);
+
+        ModTranslation translation = CreateMapEntryName();
+        translation.SetDefault("Sapling");
+        AddMapEntry(new Microsoft.Xna.Framework.Color(132, 139, 235), translation);
     }
 
     public override void RandomUpdate(int i, int j)
     {
-        if (Main.rand.NextBool(10))
+        if (Main.rand.NextBool(1))
         {
             Tile tile = Main.tile[i, j];
             tile.HasTile = false;

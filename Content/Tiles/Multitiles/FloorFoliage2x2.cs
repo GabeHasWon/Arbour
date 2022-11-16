@@ -17,5 +17,7 @@ class FloorFoliage2x2 : ModTile
         TileObjectData.newTile.RandomStyleRange = 1;
         TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
         TileObjectData.addTile(Type);
+
+        AddMapEntry(new Microsoft.Xna.Framework.Color(243, 133, 54));
     }
 }
