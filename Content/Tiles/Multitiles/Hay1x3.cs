@@ -15,7 +15,7 @@ class Hay1x3 : ModTile
 
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
         TileObjectData.newTile.Height = 3;
-        TileObjectData.newTile.CoordinateHeights = new int[3] { 16, 16, 16 };
+        TileObjectData.newTile.CoordinateHeights = new int[3] { 16, 16, 18 };
         TileObjectData.newTile.RandomStyleRange = 3;
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
@@ -23,4 +23,6 @@ class Hay1x3 : ModTile
 
         AddMapEntry(new Microsoft.Xna.Framework.Color(181, 152, 90));
     }
+
+    public override void KillMultiTile(int i, int j, int frameX, int frameY) => HayCommon.TryDropSeeds(i, j, 8, 54);
 }

@@ -1,1 +1,8 @@
-Arbor time
+This mod adds in the Arbour minibiome, which is found as a new type of floating island in the sky.
+It was made as a submission for a modjam, so it doesn't have a ton of content, but it's cute.
+
+Thanks for playing!
+
+-- Developers --
+GabeHasWon: Code, Art
+Heltonyan: Music

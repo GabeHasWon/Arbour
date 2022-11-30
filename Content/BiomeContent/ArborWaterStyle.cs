@@ -1,21 +1,20 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace Verdant.Waters
+namespace Arbour.Content.BiomeContent;
+
+public class ArborWaterStyle : ModWaterStyle
 {
-	public class ArborWaterStyle : ModWaterStyle
-	{
-		public override int ChooseWaterfallStyle() => ModContent.Find<ModWaterfallStyle>("Verdant/VerdantWaterfallStyle").Slot;
-		public override int GetSplashDust() => Mod.Find<ModDust>("VerdantWaterSplash").Type;
-		public override int GetDropletGore() => ModContent.GoreType<Gores.Verdant.ArborDroplet>();
+	public override int ChooseWaterfallStyle() => ModContent.Find<ModWaterfallStyle>("Arbour/ArborWaterfallStyle").Slot;
+	public override int GetSplashDust() => Mod.Find<ModDust>("ArborWaterSplash").Type;
+	public override int GetDropletGore() => ModContent.GoreType<Gores.ArborDroplet>();
 
-		public override void LightColorMultiplier(ref float r, ref float g, ref float b)
-        {
-			r = 0.675f;
-			g = 0.783f;
-			b = 0.9f;
-		}
-
-		public override Color BiomeHairColor() => new(183, 68, 42);
+	public override void LightColorMultiplier(ref float r, ref float g, ref float b)
+    {
+		r = 0.5f;
+		g = 0.6f;
+		b = 0.8f;
 	}
+
+	public override Color BiomeHairColor() => new(183, 68, 42);
 }

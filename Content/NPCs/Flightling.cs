@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Arbour.Content.Tiles.Blocks;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -11,11 +12,7 @@ public class Flightling : ModNPC
 {
     private bool _leavesBroken = false;
 
-    public override void SetStaticDefaults()
-    {
-        Main.npcCatchable[NPC.type] = true;
-        Main.npcFrameCount[NPC.type] = 2;
-    }
+    public override void SetStaticDefaults() => Main.npcFrameCount[NPC.type] = 2;
 
     public override void SetDefaults()
     {
@@ -29,14 +26,13 @@ public class Flightling : ModNPC
         NPC.aiStyle = NPCAIStyleID.Fighter;
 
         AIType = NPCID.AngryBones;
-        //NPC.catchItem = (short)ModContent.ItemType<FlotieItem>();
-        //SpawnModBiomes = new int[1] { ModContent.GetInstance<Scenes.VerdantBiome>().Type };
+        SpawnModBiomes = new int[1] { ModContent.GetInstance<ArborBiome>().Type };
     }
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-            new FlavorTextBestiaryInfoElement("In few words; a rascal. Tends to push you around but is easily scared."),
+            new FlavorTextBestiaryInfoElement("An absolute rascal. Tends to push you around but is easily scared."),
         });
     }
 
@@ -85,10 +81,5 @@ public class Flightling : ModNPC
         }
     }
 
-    //public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    //{
-    //    if (spawnInfo.Player.GetModPlayer<VerdantPlayer>().ZoneVerdant && (spawnInfo.PlayerInTown || spawnInfo.PlayerSafe))
-    //        return 1.5f + (spawnInfo.Water ? 0.4f : 0f);
-    //    return (spawnInfo.Player.GetModPlayer<VerdantPlayer>().ZoneVerdant) ? (spawnInfo.Water ? 1f : 0.6f) : 0f;
-    //}
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() ? 1f : 0f;
 }

@@ -2,20 +2,53 @@
 using Arbour.Content.Tiles.Blocks;
 using Arbour.Content.Tiles.Custom;
 using Arbour.Content.Tiles.Multitiles;
+using Arbour.Content.Walls;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using Terraria.WorldBuilding;
 
 namespace Arbour.Common.WorldGeneration;
 
 internal class ArborGeneration
 {
-    private static UnifiedRandom Random => Main.rand;
+    private static UnifiedRandom Random => WorldGen.gen ? WorldGen.genRand : Main.rand;
+
+    internal static void SpawnIslands(GenerationProgress progress, GameConfiguration configuration)
+    {
+        int repeats = 2 * (int)(Main.maxTilesX / 4200f);
+
+        for (int i = 0; i < repeats; ++i)
+        {
+            int x = Random.Next(200, Main.maxTilesX - 200);
+
+            while (Math.Abs(x - Main.spawnTileX) < 200) //Make sure it's not near spawn :)
+                x = Random.Next(200, Main.maxTilesX - 200);
+
+            int y = Random.Next(50, (int)(Main.worldSurface * 0.35));
+
+            int tileCount = 0;
+
+            for (int x1 = x - 75; x1 <= x + 75; ++x1)
+                for (int y1 = y; y1 < y + 60; ++y1)
+                    if (WorldGen.SolidTile(x1, y1))
+                        tileCount++;
+
+            if (tileCount > 30)
+            {
+                i--;
+                continue;
+            }
+
+            BuildSingleIsland(x, y, Random.NextBool(9));
+        }
+    }
 
     public static void BuildSingleIsland(int x, int y, bool genericUnderside = false)
     {
@@ -49,7 +82,7 @@ internal class ArborGeneration
                 bool external = j == startY || i == left || i == right - 1;
                 WorldGen.PlaceTile(i, j, external ? ModContent.TileType<ArborGrass>() : TileID.Dirt);
 
-                if (j == startY)
+                if (external)
                     topGrass.Add(new(i, j));
             }
         }
@@ -83,26 +116,61 @@ internal class ArborGeneration
     {
         foreach (var item in topGrass)
         {
-            if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y - 1, ModContent.TileType<FloorFoliage2x2>(), forceIfPossible: false))
+            if (Main.rand.NextBool(2) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<ArborSapling>(), mute: true, forceIfPossible: false))
+            {
+                if (WorldGen.GrowTree(item.X, item.Y - 2))
+                    continue;
+                else
+                    WorldGen.KillTile(item.X, item.Y - 1);
+            }
+
+            TryPlaceLeafWalls(item);
+        }
+
+        foreach (var item in topGrass)
+        {
+            if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<FloorFoliage2x2>(), mute: true, forceIfPossible: false))
                 continue;
 
-            if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y - 1, ModContent.TileType<BigPinecone2x2>(), forceIfPossible: false))
+            if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<BigPinecone2x2>(), mute: true, forceIfPossible: false))
                 continue;
 
-            if (Main.rand.NextBool(8) && TileHelper.TryPlaceProperly(item.X, item.Y - 1, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
+            if (Main.rand.NextBool(8) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x3>(), mute: true, forceIfPossible: false))
                 continue;
 
-            if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(item.X, item.Y - 1, ModContent.TileType<FloorFoliage2x1>(), forceIfPossible: false))
+            if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<FloorFoliage2x1>(), mute: true, forceIfPossible: false))
                 continue;
 
-            if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y - 1, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
+            if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x2>(), mute: true, forceIfPossible: false))
                 continue;
 
-            if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y - 1, ModContent.TileType<PineconeSmall>(), forceIfPossible: false))
+            if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<PineconeSmall>(), mute: true, forceIfPossible: false))
                 continue;
 
-            if (TileHelper.TryPlaceProperly(item.X, item.Y - 1, ModContent.TileType<Hay1x1>(), forceIfPossible: false))
+            if (TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x1>(), mute: true, forceIfPossible: false))
                 continue;
+        }
+    }
+
+    private static void TryPlaceLeafWalls(Point16 item)
+    {
+        if (!Random.NextBool(6))
+            return;
+
+        int width = Random.Next(3, 7);
+        int height = Random.Next(8, 18);
+
+        for (int i = item.X - width; i < item.X + width; ++i)
+        {
+            for (int j = item.Y - height; j < item.Y + height; ++j)
+            {
+                int xDist = (int)Math.Pow(i - item.X, 2);
+                int yDist = (int)(Math.Pow(j - item.Y, 2) / (height / width));
+                int distance = xDist + yDist;
+
+                if (distance < (height + width) / 2)
+                    WorldGen.PlaceWall(i, j, ModContent.WallType<ArborLeafWall_Unsafe>());
+            }
         }
     }
 
@@ -128,7 +196,7 @@ internal class ArborGeneration
 
     private static void UndergrowthPlants(int i, int placeY)
     {
-        if (Main.rand.NextBool(17))
+        if (Main.rand.NextBool(6))
             Microbirch.SpawnAt(i, placeY + 1);
         else
         {

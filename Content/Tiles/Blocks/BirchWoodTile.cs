@@ -15,7 +15,7 @@ namespace Arbour.Content.Tiles.Blocks;
 		Main.tileBlockLight[Type] = true;
 
 		TileHelper.MergeWith(Type, TileID.Dirt, ModContent.TileType<ArborGrass>());
-		AddMapEntry(new Color(198, 98, 43));
+		AddMapEntry(new Color(230, 230, 235));
 
 		ItemDrop = ModContent.ItemType<BirchWoodBlock>();
 	}

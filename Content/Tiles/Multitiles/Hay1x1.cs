@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using Arbour.Content.Items.Placeable;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,8 +24,11 @@ class Hay1x1 : ModTile
         TileObjectData.newTile.RandomStyleRange = 5;
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
+        TileObjectData.newTile.CoordinateHeights = new int[1] { 18 };
         TileObjectData.addTile(Type);
 
         AddMapEntry(new Microsoft.Xna.Framework.Color(181, 152, 90));
     }
+
+    public override void KillMultiTile(int i, int j, int frameX, int frameY) => HayCommon.TryDropSeeds(i, j, 15, 16);
 }

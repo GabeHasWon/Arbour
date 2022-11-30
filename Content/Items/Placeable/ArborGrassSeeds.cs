@@ -20,6 +20,7 @@ public class ArborGrassSeeds : ModItem
 		Item.maxStack = 999;
 		Item.width = 16;
 		Item.height = 18;
+		Item.consumable = true;
 	}
 
 	public override bool? UseItem(Player player)
@@ -34,7 +35,6 @@ public class ArborGrassSeeds : ModItem
 			tile.TileType = (ushort)ModContent.TileType<ArborGrass>();
 			WorldGen.TileFrame(Player.tileTargetX, Player.tileTargetY);
 		}
-
 		return true;
 	}
 }
