@@ -20,7 +20,7 @@ public class BirchWorkbench : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.IgnoredByNpcStepUp[Type] = true;
 
-		DustType = DustID.BubbleBurst_White;
+		DustType = ModContent.DustType<Dusts.BirchDust>();
 		AdjTiles = new int[] { TileID.WorkBenches };
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);

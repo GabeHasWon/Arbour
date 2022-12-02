@@ -18,5 +18,6 @@ namespace Arbour.Content.Tiles.Blocks;
 		AddMapEntry(new Color(230, 230, 235));
 
 		ItemDrop = ModContent.ItemType<BirchWoodBlock>();
+		DustType = ModContent.DustType<Dusts.BirchDust>();
 	}
 }

@@ -29,7 +29,7 @@ namespace Arbour.Content.Tiles.Custom
 		public override Asset<Texture2D> GetTexture() => ModContent.Request<Texture2D>(Path);
 		public override Asset<Texture2D> GetBranchTextures() => ModContent.Request<Texture2D>(Path + "_Branches");
 		public override Asset<Texture2D> GetTopTextures() => ModContent.Request<Texture2D>(Path + "_Tops");
-		public override int CreateDust() => DustID.BubbleBurst_White;
+		public override int CreateDust() => ModContent.DustType<Dusts.BirchDust>();
 
         public override int SaplingGrowthType(ref int style)
 		{

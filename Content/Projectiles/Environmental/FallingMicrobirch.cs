@@ -13,6 +13,8 @@ namespace Arbour.Content.Projectiles.Environmental
 {
     internal class FallingMicrobirch : ModProjectile
     {
+        private static readonly string[] DeathTexts = new string[] { "<p> cut a tree above their head.", "A tree landed on <p>'s head.", "<p> discovered gravity...again." };
+
         internal List<TileDrawState> States = new();
 
         public override void SetDefaults()
@@ -33,12 +35,23 @@ namespace Arbour.Content.Projectiles.Environmental
             Projectile.velocity.Y += 0.2f;
             Projectile.rotation += Projectile.ai[0];
 
-            var npcs = Main.npc.Take(Main.maxNPCs).Where(x => x.CanBeChasedBy());
-            var plrs = Main.player.Take(Main.maxPlayers).Where(x => x.active && !x.dead);
+            Span<bool> collidingNPCs = stackalloc bool[Main.maxNPCs];
+            foreach (var npc in ActiveEntities.NPCs)
+            {
+                if (npc.CanBeChasedBy() && EntityInHitbox(npc))
+                    collidingNPCs[npc.whoAmI] = true;
+            }
+
+            Span<bool> collidingPlayers = stackalloc bool[Main.maxPlayers];
+            foreach (var plr in ActiveEntities.Players)
+            {
+                if (!plr.dead && EntityInHitbox(plr))
+                    collidingPlayers[plr.whoAmI] = true;
+            }
 
             for (int i = 0; i < States.Count; ++i)
             {
-                if (UpdateSingleState(i, plrs, npcs))
+                if (UpdateSingleState(i, collidingPlayers, collidingNPCs))
                     i--;
             }
 
@@ -46,7 +59,17 @@ namespace Arbour.Content.Projectiles.Environmental
                 Projectile.Kill();
         }
 
-        private bool UpdateSingleState(int index, IEnumerable<Player> plrs, IEnumerable<NPC> npcs)
+        private bool EntityInHitbox(Entity entity)
+        {
+            Vector2 top = Projectile.Center - (Vector2.UnitY * Projectile.height / 2).RotatedBy(Projectile.rotation);
+            Vector2 bottom = Projectile.Center + (Vector2.UnitY * Projectile.height / 2).RotatedBy(Projectile.rotation);
+
+            float discard = 0;
+            return Collision.CheckAABBvLineCollision(entity.position, entity.Size, top, bottom, 6, ref discard);
+        }
+
+        /// <summary>Updates a given TileDrawState. Players and npcs have already been confirmed to be active, not dead and touching the projectile</summary>
+        private bool UpdateSingleState(int index, Span<bool> players, Span<bool> npcs)
         {
             TileDrawState tileDrawState = States[index];
 
@@ -82,30 +105,29 @@ namespace Arbour.Content.Projectiles.Environmental
 
             var hitbox = new Rectangle((int)realPos.X, (int)realPos.Y, tileDrawState.frame.X, tileDrawState.frame.Y);
 
-            foreach (var item in plrs) //Player collision
+            for (int i = 0; i < players.Length; ++i) //Player collision
             {
-                if (item.Hitbox.Intersects(hitbox))
+                if (players[i] && Main.player[i].Hitbox.Intersects(hitbox))
                 {
-                    string[] deathTexts = new string[] { $"{item.name} cut a tree above their head.", $"A tree landed on {item.name}'s head.", $"{item.name} discovered gravity...again." };
-                    item.Hurt(PlayerDeathReason.ByCustomReason(Main.rand.Next(deathTexts)), Main.DamageVar(12), 0);
+                    Main.player[i].Hurt(PlayerDeathReason.ByCustomReason(Main.rand.Next(DeathTexts).Replace("<p>", Main.player[i].name)), Main.DamageVar(12), 0);
 
                     KillMe();
                     return true;
                 }
             }
 
-            foreach (var npc in npcs) //NPC collision
+            for (int i = 0; i < npcs.Length; ++i) //NPC collision
             {
-                if (npc.Hitbox.Intersects(hitbox))
+                if (npcs[i] && Main.npc[i].Hitbox.Intersects(hitbox))
                 {
-                    npc.StrikeNPCNoInteraction(Main.DamageVar(12), 1f, 0, false, false, false);
+                    Main.npc[i].StrikeNPCNoInteraction(Main.DamageVar(12), 1f, 0, false, false, false);
 
                     KillMe();
                     return true;
                 }
             }
 
-            if (Main.rand.NextBool(22) && tileDrawState.overrideTex is not null) //If I'm a leafy part falling, spawn leaves
+            if (Main.rand.NextBool(12) && tileDrawState.overrideTex is not null) //If I'm a leafy part falling, spawn leaves
                 Gore.NewGore(Terraria.Entity.InheritSource(Projectile), realPos, Vector2.Zero, Mod.Find<ModGore>("OrangeLeaf").Type);
             return false;
         }

@@ -1,12 +1,7 @@
 using Arbour.Common.WorldGeneration;
-using Arbour.Content.Tiles;
-using Arbour.Content.Tiles.Blocks;
-using Arbour.Content.Tiles.Custom;
-using Arbour.Content.Tiles.Multitiles;
 using Arbour.Content.Walls;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,7 +10,7 @@ namespace Arbour.Content.Items
 	public class Debug : ModItem
 	{
 		public override void SetStaticDefaults() => Tooltip.SetDefault("arbor test item");
-        public override bool IsLoadingEnabled(Mod mod) => false;
+        public override bool IsLoadingEnabled(Mod mod) => true;
 
         public override void SetDefaults()
 		{
@@ -43,7 +38,6 @@ namespace Arbour.Content.Items
             //    WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
             //TileHelper.TryPlaceProperly(pos, ModContent.TileType<Hay1x3>(), forceIfPossible: true);
             ArborGeneration.BuildSingleIsland(pos.X, pos.Y);
-
             //WorldGen.PlaceObject(pos.X, pos.Y, ModContent.TileType<ArborSapling>());
             //Main.NewText(WorldGen.GrowTree(pos.X, pos.Y));
             return true;

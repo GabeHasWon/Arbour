@@ -25,7 +25,7 @@ public class MispiritBoss : ModNPC
 
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Mischevous Spirit");
+        DisplayName.SetDefault("Mischevous Spirit [Disabled]");
         Main.npcFrameCount[NPC.type] = 1;
     }
 
