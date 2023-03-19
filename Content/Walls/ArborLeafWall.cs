@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Arbour.Content.Items.Placeable;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +12,7 @@ public class ArborLeafWall : ModWall
     {
         Main.wallHouse[Type] = true;
         DustType = DustID.Pumpkin;
-        //ItemDrop = ModContent.ItemType<LushWoodWallItem>();
+        ItemDrop = ModContent.ItemType<ArborLeafWallBlock>();
         AddMapEntry(new Color(51, 12, 20));
     }
 

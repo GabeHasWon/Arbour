@@ -6,7 +6,7 @@ using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Arbour.Content.Items.Placeable;
+using Arbour.Content.Items.Placeable.BirchFurniture;
 
 namespace Arbour.Content.Tiles.Multitiles.Furniture;
 

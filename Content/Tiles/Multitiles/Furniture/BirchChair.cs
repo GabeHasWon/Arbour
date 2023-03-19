@@ -1,5 +1,5 @@
 using Arbour.Content.Dusts;
-using Arbour.Content.Items.Placeable;
+using Arbour.Content.Items.Placeable.BirchFurniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

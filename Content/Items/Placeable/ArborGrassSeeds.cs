@@ -7,7 +7,11 @@ namespace Arbour.Content.Items.Placeable;
 
 public class ArborGrassSeeds : ModItem
 {
-	public override void SetStaticDefaults() => Tooltip.SetDefault("Can be placed");
+	public override void SetStaticDefaults()
+	{
+		Tooltip.SetDefault("Can be placed");
+		SacrificeTotal = 100;
+	}
 
 	public override void SetDefaults()
 	{

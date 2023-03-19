@@ -6,7 +6,11 @@ namespace Arbour.Content.Items.Placeable;
 
 public class ArborLeafWallBlock : ModItem
 {
-	public override void SetDefaults() => Item.DefaultToPlacableWall((ushort)ModContent.WallType<ArborLeafWall>());
+    public override void SetDefaults()
+    {
+        Item.DefaultToPlacableWall((ushort)ModContent.WallType<ArborLeafWall>());
+        SacrificeTotal = 400;
+    }
 
     public override void AddRecipes()
     {

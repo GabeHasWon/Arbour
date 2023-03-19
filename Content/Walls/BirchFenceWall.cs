@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.Walls;
 
-public class BirchWoodWall : ModWall
+public class BirchFenceWall : ModWall
 {
     public override void SetStaticDefaults()
     {

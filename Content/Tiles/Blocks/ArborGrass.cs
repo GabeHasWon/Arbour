@@ -44,6 +44,11 @@ public class ArborGrass : ModTile
 				WorldGen.PlaceTile(i, j + 1, ModContent.TileType<ArborVines>(), true);
 		}
 
+		//Try spread grass
+		if (TileHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)
+			NetMessage.SendTileSquare(-1, i, j, 3, TileChangeType.None);
+
+		//Spawn hay foliage
 		if (Main.rand.NextBool(14) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
 			return;
 

@@ -1,11 +1,15 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Arbour.Content.Items.Placeable;
+namespace Arbour.Content.Items.Placeable.BirchFurniture;
 
 public class BirchDoorBlock : ModItem
 {
-	public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Multitiles.Furniture.BirchDoorClosed>());
+	public override void SetDefaults() 
+    { 
+        Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Multitiles.Furniture.BirchDoorClosed>());
+        SacrificeTotal = 100;
+    }
 
     public override void AddRecipes()
     {

@@ -1,4 +1,4 @@
-using Arbour.Content.Items.Placeable;
+using Arbour.Content.Items.Placeable.BirchFurniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
