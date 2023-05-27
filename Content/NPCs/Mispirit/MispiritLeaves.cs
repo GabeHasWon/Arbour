@@ -58,11 +58,16 @@ internal class MispiritLeaves : ModProjectile
 
         float xOff = (float)Math.Sin(WaveAdjustment);
 
-        Projectile.Center = Owner.Center + new Vector2(0, Owner.gfxOffY);
-        Projectile.position.X += xOff * 34f * _velScaling.X + (Projectile.width / 4);
-        Projectile.position.Y += (float)Math.Sin(Projectile.ai[1]++ * 0.06f) * 18f * _velScaling.Y + (Projectile.height / 4);
-        Projectile.rotation = (xOff * 0.8f) + (Owner.velocity.X * 0.2f);
+        //Projectile.Center = Owner.Center + new Vector2(0, Owner.gfxOffY);
+        //Projectile.position.X += xOff * 34f * _velScaling.X + (Projectile.width / 4);
+        //Projectile.position.Y += (float)Math.Sin(Projectile.ai[1]++ * 0.06f) * 18f * _velScaling.Y + (Projectile.height / 4);
+
         Projectile.scale = 1 - Math.Abs((float)Math.Cos(WaveAdjustment * 0.5f)) * 0.4f;
+
+        float xVel = xOff * 34f * _velScaling.X + (Projectile.width / 4);
+        float yVel = (float)Math.Sin(Projectile.ai[1]++ * 0.06f) * 18f * _velScaling.Y + (Projectile.height / 4);
+        Projectile.velocity = (new Vector2(xVel, yVel) * 0.2f) + ((Owner.Center - Projectile.Center) * 0.2f);
+        Projectile.rotation = (xOff * 0.8f) + (Owner.velocity.X * 0.2f);
 
         Lighting.AddLight(Projectile.Center, new Vector3(0.4f, 0.12f, 0.24f) * 0.8f);
 

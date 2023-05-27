@@ -1,6 +1,6 @@
 displayName = Arbour
 author = GabeHasWon, Heltonyan
-version = 1.0.0.1
+version = 1.0.0.3
 dllReferences = StructureHelper
 hideCode = false
 hideResources = false

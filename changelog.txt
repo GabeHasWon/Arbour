@@ -1,5 +1,11 @@
-﻿- Arbor grass spreads to nearby dirt now
-- Added Birch Lamp
-- Internal reorganization
-- Added Journey Mode research counts to all items
-- Added Birch Fences
+﻿- Fixed Arbor Grass Seeds being consumed improperly
+- Sycned Arbor Grass Seeds on servers
+- Added Arbor Grass Seeds to the Dryad's shop
+- Fixed Hay Grasses playing the wrong sound when broken
+- Buffed Flightling health slightly
+- Nerfed Flightling spawnrate heavily (1f -> 0.5f)
+- Fixed Flightling hit and death sounds
+- Fixed Flightling making zombie noises
+- Re-added actual chance for Microbirch Saplings to grow instead of always growing on RandomUpdate
+- Added sound to falling Microbirches
+- Fixed Microbirches not falling if their anchors are broken

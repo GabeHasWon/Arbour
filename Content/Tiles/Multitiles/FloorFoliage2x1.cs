@@ -25,5 +25,7 @@ class FloorFoliage2x1 : ModTile
         TileObjectData.addTile(Type);
 
         AddMapEntry(new Microsoft.Xna.Framework.Color(243, 133, 54));
+
+        HitSound = SoundID.Grass;
     }
 }

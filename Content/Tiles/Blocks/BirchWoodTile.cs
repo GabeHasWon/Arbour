@@ -6,10 +6,10 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.Tiles.Blocks;
 
-	internal class BirchWoodTile : ModTile
+internal class BirchWoodTile : ModTile
+{
+	public override void SetStaticDefaults()
 	{
-		public override void SetStaticDefaults()
-		{
 		Main.tileSolid[Type] = true;
 		Main.tileMerge[Type][Type] = true;
 		Main.tileBlockLight[Type] = true;

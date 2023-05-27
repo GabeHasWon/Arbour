@@ -47,6 +47,7 @@ namespace Arbour.Content.Tiles.Multitiles
 
 			DustType = DustID.Pumpkin;
 			AdjTiles = new int[] { TileID.Saplings };
+			HitSound = SoundID.Grass;
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;

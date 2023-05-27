@@ -21,7 +21,7 @@ public class BirchWoodWallBlock : ModItem
             Register();
 
         Recipe.Create(ModContent.ItemType<BirchWoodBlock>(), 1).
-            AddIngredient<BirchFenceBlock>(4).
+            AddIngredient<BirchWoodWallBlock>(4).
             AddTile(TileID.WorkBenches).
             Register();
     }

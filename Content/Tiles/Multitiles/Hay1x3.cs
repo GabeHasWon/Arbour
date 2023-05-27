@@ -22,6 +22,8 @@ class Hay1x3 : ModTile
         TileObjectData.addTile(Type);
 
         AddMapEntry(new Microsoft.Xna.Framework.Color(181, 152, 90));
+
+        HitSound = Terraria.ID.SoundID.Grass;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY) => HayCommon.TryDropSeeds(i, j, 8, 54);

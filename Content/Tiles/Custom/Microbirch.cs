@@ -1,5 +1,6 @@
 ﻿using Arbour.Content.Projectiles.Environmental;
 using Arbour.Content.Projectiles.Info;
+using Arbour.Content.Tiles.Blocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Arbour.Content.Tiles.Custom;
 [TileTag(TileTags.NeedsTopAnchor)]
 internal class Microbirch : ModTile
 {
-    public static bool KillingMicrobirch = false;
+    private static bool KillingMicrobirch = false;
 
     const int TreeBottomFrame = 3 * 18;
 
@@ -26,9 +27,13 @@ internal class Microbirch : ModTile
         Main.tileSolid[Type] = false;
         Main.tileAxe[Type] = true;
 
-        ModTranslation translation = CreateMapEntryName();
-        translation.SetDefault("Microbirch");
-        AddMapEntry(new Color(230, 230, 235), translation);
+        AddMapEntry(new Color(230, 230, 235), CreateMapEntryName());
+    }
+
+    public override void NearbyEffects(int i, int j, bool closer)
+    {
+        if (!WorldGen.SolidTile(i, j - 1) && Main.tile[i, j - 1].TileType != Type && Main.tile[i, j - 1].TileType != ModContent.TileType<ArborGrass>())
+            WorldGen.KillTile(i, j);
     }
 
     public static void SpawnAt(int x, int y)

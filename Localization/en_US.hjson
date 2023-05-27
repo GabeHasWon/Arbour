@@ -1,0 +1,7 @@
+﻿Mods: {
+	Arbour: {
+		MapObject: {
+			Microbirch: Microbirch
+		}
+	}
+}

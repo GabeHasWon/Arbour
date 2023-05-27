@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -86,12 +87,16 @@ namespace Arbour.Content.Projectiles.Environmental
                 for (int i = 0; i < 7; ++i)
                     Dust.NewDust(realPos, tileDrawState.frame.X, tileDrawState.frame.Y, DustID.Pumpkin);
 
-                if (tileDrawState.overrideTex is not null)
+                if (tileDrawState.overrideTex is not null) //If this is a leafy top
                 {
                     for (int i = 0; i < 4; ++i)
                         Gore.NewGore(Terraria.Entity.InheritSource(Projectile), realPos, Vector2.Zero, Mod.Find<ModGore>("OrangeLeaf").Type);
+                    
                     Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<MicrobirchAcorn>());
+                    SoundEngine.PlaySound(SoundID.Grass, realPos);
                 }
+                else
+                    SoundEngine.PlaySound(SoundID.Dig, realPos);
 
                 if (!Main.rand.NextBool(5))
                     Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<BirchWoodBlock>());

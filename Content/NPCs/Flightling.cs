@@ -20,12 +20,14 @@ public class Flightling : ModNPC
         NPC.height = 22;
         NPC.damage = 5;
         NPC.defense = 6;
-        NPC.lifeMax = 20;
+        NPC.lifeMax = 30;
         NPC.value = 10;
         NPC.knockBackResist = 1.05f;
         NPC.aiStyle = NPCAIStyleID.Fighter;
+        NPC.HitSound = SoundID.Grass;
+        NPC.DeathSound = SoundID.DD2_GoblinHurt;
 
-        AIType = NPCID.AngryBones;
+        AIType = NPCID.GoblinScout;
         SpawnModBiomes = new int[1] { ModContent.GetInstance<ArborBiome>().Type };
     }
 
@@ -57,7 +59,7 @@ public class Flightling : ModNPC
         Player target = Main.player[NPC.target];
 
         float dir = target.Center.X < NPC.Center.X ? 1 : -1;
-        NPC.velocity.X += dir * 0.05f;
+        NPC.velocity.X += dir * 0.2f;
         NPC.velocity.X = MathHelper.Clamp(NPC.velocity.X, -4, 4);
 
         bool grounded = Collision.SolidCollision(NPC.BottomLeft, NPC.width, 6) && NPC.velocity.Y >= 0; //Little jumps so it can skedaddle away
@@ -79,7 +81,13 @@ public class Flightling : ModNPC
             for (int i = 0; i < 16; ++i)
                 Dust.NewDust(NPC.position, NPC.width, NPC.height / 2, DustID.Pumpkin, Main.rand.NextFloat(-2f, 2), Main.rand.NextFloat(-2, -0.5f), 0, Color.Orange, Main.rand.NextFloat(1f, 1.5f));
         }
+
+        if (NPC.life <= 0)
+        {
+            for (int i = 0; i < 16; ++i)
+                Dust.NewDust(NPC.position, NPC.width, NPC.height / 2, DustID.Pumpkin, Main.rand.NextFloat(-2f, 2), Main.rand.NextFloat(-2, -0.5f), 0, Color.Orange, Main.rand.NextFloat(1f, 1.5f));
+        }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() ? 1f : 0f;
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() ? 0.5f : 0f;
 }

@@ -12,7 +12,7 @@ public class BirchFenceWall : ModWall
     {
         Main.wallHouse[Type] = true;
         DustType = DustID.Pumpkin;
-        ItemDrop = ModContent.ItemType<BirchWoodWallBlock>();
+        ItemDrop = ModContent.ItemType<BirchFenceBlock>();
         AddMapEntry(new Color(230, 230, 235) * 0.4f);
     }
 
