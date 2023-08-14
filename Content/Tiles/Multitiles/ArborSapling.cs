@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -36,8 +37,8 @@ namespace Arbour.Content.Tiles.Multitiles
 			TileObjectData.newTile.StyleMultiplier = 3;
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sapling");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sapling");
 			AddMapEntry(new Color(99, 95, 119), name);
 
 			TileID.Sets.TreeSapling[Type] = true;

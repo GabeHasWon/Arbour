@@ -35,7 +35,7 @@ public class BirchPlatformTile : ModTile
 		AddMapEntry(new Color(145, 104, 51));
 
 		DustType = DustID.t_BorealWood;
-		ItemDrop = ModContent.ItemType<BirchPlatformBlock>();
+		//ItemDrop/* tModPorter Note: Removed. Tiles and walls will drop the item which places them automatically. Use RegisterItemDrop to alter the automatic drop if necessary. */ = ModContent.ItemType<BirchPlatformBlock>();
 		AdjTiles = new int[] { TileID.Platforms };
 	}
 

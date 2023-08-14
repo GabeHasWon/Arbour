@@ -9,8 +9,8 @@ public class BirchFenceBlock : ModItem
 {
 	public override void SetDefaults()
     {
-        Item.DefaultToPlacableWall((ushort)ModContent.WallType<BirchFenceWall>());
-        SacrificeTotal = 400;
+        Item.DefaultToPlaceableWall((ushort)ModContent.WallType<BirchFenceWall>());
+        Item.ResearchUnlockCount = 400;
     }
 
     public override void AddRecipes()

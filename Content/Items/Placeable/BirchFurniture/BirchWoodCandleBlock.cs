@@ -8,7 +8,7 @@ public class BirchWoodCandleBlock : ModItem
 	public override void SetDefaults() 
     { 
         Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Multitiles.Furniture.BirchCandle>());
-        SacrificeTotal = 100;
+        Item.ResearchUnlockCount = 100;
     }
 
     public override void AddRecipes()

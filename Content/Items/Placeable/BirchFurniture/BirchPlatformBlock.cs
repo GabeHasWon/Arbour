@@ -9,7 +9,7 @@ public class BirchPlatformBlock : ModItem
     public override void SetDefaults()
     {
         Item.DefaultToPlaceableTile(ModContent.TileType<BirchPlatformTile>());
-        SacrificeTotal = 100;
+        Item.ResearchUnlockCount = 100;
     }
 
     public override void AddRecipes()

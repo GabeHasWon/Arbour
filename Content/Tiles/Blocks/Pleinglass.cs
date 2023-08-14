@@ -7,10 +7,10 @@ namespace Arbour.Content.Tiles.Blocks;
 
 internal class Pleinglass : ModTile
 {
-    public override void Load() => On.Terraria.Player.Update += Player_Update;
+    public override void Load() => Terraria.On_Player.Update += Player_Update;
     public override bool IsLoadingEnabled(Mod mod) => false;
 
-    private void Player_Update(On.Terraria.Player.orig_Update orig, Player self, int i)
+    private void Player_Update(Terraria.On_Player.orig_Update orig, Player self, int i)
     {
         Main.tileSolid[Type] = false;
         orig(self, i);

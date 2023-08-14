@@ -125,7 +125,7 @@ namespace Arbour.Content.Projectiles.Environmental
             {
                 if (npcs[i] && Main.npc[i].Hitbox.Intersects(hitbox))
                 {
-                    Main.npc[i].StrikeNPCNoInteraction(Main.DamageVar(12), 1f, 0, false, false, false);
+                    Main.npc[i].StrikeNPC(Main.npc[i].CalculateHitInfo(20, 1, true, 6, DamageClass.Default, false));
 
                     KillMe();
                     return true;

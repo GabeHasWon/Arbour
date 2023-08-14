@@ -1,5 +1,6 @@
 ﻿using Arbour.Content.Tiles.Blocks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,8 +10,8 @@ public class ArborGrassSeeds : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		Tooltip.SetDefault("Can be placed");
-		SacrificeTotal = 100;
+		// Tooltip.SetDefault("Can be placed");
+		Item.ResearchUnlockCount = 100;
 	}
 
 	public override void SetDefaults()
@@ -31,7 +32,7 @@ public class ArborGrassSeeds : ModItem
 	{
 		Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
 
-		if (tile.HasTile && tile.TileType == TileID.Dirt && player.InInteractionRange(Player.tileTargetX, Player.tileTargetY)) 
+		if (tile.HasTile && tile.TileType == TileID.Dirt && player.InInteractionRange(Player.tileTargetX, Player.tileTargetY, TileReachCheckSettings.Simple)) 
 		{
 			tile.TileType = (ushort)ModContent.TileType<ArborGrass>();
 			WorldGen.TileFrame(Player.tileTargetX, Player.tileTargetY);

@@ -8,8 +8,8 @@ public class ArborLeafWallBlock : ModItem
 {
     public override void SetDefaults()
     {
-        Item.DefaultToPlacableWall((ushort)ModContent.WallType<ArborLeafWall>());
-        SacrificeTotal = 400;
+        Item.DefaultToPlaceableWall((ushort)ModContent.WallType<ArborLeafWall>());
+        Item.ResearchUnlockCount = 400;
     }
 
     public override void AddRecipes()

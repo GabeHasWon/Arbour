@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Enums;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -28,8 +29,8 @@ class MicrobirchSapling : ModTile
         TileObjectData.newTile.AnchorTop = new Terraria.DataStructures.AnchorData(AnchorType.SolidBottom | AnchorType.SolidTile, 1, 0);
         TileObjectData.addTile(Type);
 
-        ModTranslation translation = CreateMapEntryName();
-        translation.SetDefault("Sapling");
+        LocalizedText translation = CreateMapEntryName();
+        // translation.SetDefault("Sapling");
         AddMapEntry(new Microsoft.Xna.Framework.Color(132, 139, 235), translation);
     }
 

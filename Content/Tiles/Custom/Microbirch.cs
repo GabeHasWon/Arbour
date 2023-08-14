@@ -98,7 +98,7 @@ internal class Microbirch : ModTile
                     {
                         state.overrideTex = "Arbour/Content/Tiles/Custom/MicrobirchBottom";
                         state.overrideSize = new Point(48, 42);
-                        state.frame = new Point(states[^2].frame.X / 18 * 50, 0);
+                        state.frame = new Point(states[^1].frame.X / 18 * 50, 0);
                     }
 
                     states.Add(state);

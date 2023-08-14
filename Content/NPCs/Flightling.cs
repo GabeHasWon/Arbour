@@ -32,7 +32,7 @@ public class Flightling : ModNPC
     }
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    {
+    { 
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
             new FlavorTextBestiaryInfoElement("An absolute rascal. Tends to push you around but is easily scared."),
         });
@@ -72,7 +72,7 @@ public class Flightling : ModNPC
 
     public override void FindFrame(int frameHeight) => NPC.frame.Y = frameHeight * _leavesBroken.ToInt();
 
-    public override void HitEffect(int hitDirection, double damage)
+    public override void HitEffect(NPC.HitInfo hit)
     {
         if (NPC.life <= NPC.lifeMax / 2 && !_leavesBroken)
         {

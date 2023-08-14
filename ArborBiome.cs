@@ -9,7 +9,7 @@ namespace Arbour;
 
 internal class ArborBiome : ModBiome
 {
-    public override void SetStaticDefaults() => DisplayName.SetDefault("Arbour");
+    // public override void SetStaticDefaults() => DisplayName.SetDefault("Arbour");
     public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Arbour/ArborWaterStyle");
     public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
     public override SceneEffectPriority Priority => SceneEffectPriority.Environment;

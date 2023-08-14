@@ -19,8 +19,7 @@ public class ArborGrass : ModTile
 		TileID.Sets.Conversion.Grass[Type] = true;
 		
 		AddMapEntry(new Color(198, 98, 43));
-
-		ItemDrop = ItemID.DirtBlock;
+		RegisterItemDrop(ItemID.DirtBlock);
 	}
 
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
@@ -49,10 +48,10 @@ public class ArborGrass : ModTile
 			NetMessage.SendTileSquare(-1, i, j, 3, TileChangeType.None);
 
 		//Spawn hay foliage
-		if (Main.rand.NextBool(14) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
+		if (Main.rand.NextBool(14) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
 			return;
 
-		if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
+		if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
 			return;
 
 		if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x1>(), forceIfPossible: false))

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -29,8 +30,8 @@ public class BirchWorkbench : ModTile
 
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 
-		ModTranslation name = CreateMapEntryName();
-		name.SetDefault("Work Bench");
+		LocalizedText name = CreateMapEntryName();
+		// name.SetDefault("Work Bench");
 		AddMapEntry(new Color(229, 208, 222), name);
 	}
 

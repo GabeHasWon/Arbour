@@ -21,7 +21,7 @@ internal class MispiritLeaves : ModProjectile
 
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Mispirit Leaf");
+        // DisplayName.SetDefault("Mispirit Leaf");
 
         Main.projFrames[Type] = 4;
     }

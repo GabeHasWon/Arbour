@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Arbour.Content.Items.Placeable.BirchFurniture;
@@ -18,18 +19,19 @@ public class BirchDoorOpen : ModTile
 		Main.tileSolid[Type] = false;
 		Main.tileLavaDeath[Type] = true;
 		Main.tileNoSunLight[Type] = true;
+
 		TileID.Sets.HousingWalls[Type] = true;
 		TileID.Sets.HasOutlines[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
+		TileID.Sets.CloseDoorID[Type] = ModContent.TileType<BirchDoorClosed>();
 
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
 
 		DustType = ModContent.DustType<Dusts.BirchDust>();
 		AdjTiles = new int[] { TileID.OpenDoor };
-		CloseDoorID = ModContent.TileType<BirchDoorClosed>();
 
-		ModTranslation name = CreateMapEntryName();
-		name.SetDefault("Birch Door");
+		LocalizedText name = CreateMapEntryName();
+		// name.SetDefault("Birch Door");
 		AddMapEntry(new Color(230, 230, 235), name);
 
 		TileObjectData.newTile.Width = 2;

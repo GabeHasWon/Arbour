@@ -17,7 +17,6 @@ internal class BirchWoodTile : ModTile
 		TileHelper.MergeWith(Type, TileID.Dirt, ModContent.TileType<ArborGrass>());
 		AddMapEntry(new Color(230, 230, 235));
 
-		ItemDrop = ModContent.ItemType<BirchWoodBlock>();
 		DustType = ModContent.DustType<Dusts.BirchDust>();
 	}
 }

@@ -7,8 +7,8 @@ public class MicrobirchAcorn : ModItem
 {
 	public override void SetStaticDefaults() 
     {
-        Tooltip.SetDefault("Can only be planted on ceilings");
-        SacrificeTotal = 50;
+        // Tooltip.SetDefault("Can only be planted on ceilings");
+        Item.ResearchUnlockCount = 50;
     }
 
 	public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<MicrobirchSapling>());

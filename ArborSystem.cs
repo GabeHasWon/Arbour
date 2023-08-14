@@ -8,7 +8,7 @@ namespace Arbour
 {
     internal class ArborSystem : ModSystem
     {
-        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {       
             tasks.Insert(tasks.Count - 6, new PassLegacy("Arbor Islands", ArborGeneration.SpawnIslands));
         }

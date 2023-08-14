@@ -9,7 +9,7 @@ public class BirchWoodLampBlock : ModItem
     public override void SetDefaults()
     {
         Item.DefaultToPlaceableTile(ModContent.TileType<BirchLamp>());
-        SacrificeTotal = 100;
+        Item.ResearchUnlockCount = 100;
     }
 
     public override void AddRecipes()

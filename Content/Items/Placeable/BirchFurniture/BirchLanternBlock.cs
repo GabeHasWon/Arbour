@@ -8,7 +8,7 @@ public class BirchLanternBlock : ModItem
     public override void SetDefaults() 
     {
         Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Multitiles.Furniture.BirchLantern>());
-        SacrificeTotal = 100;
+        Item.ResearchUnlockCount = 100;
     }
 
     public override void AddRecipes()

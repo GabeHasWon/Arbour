@@ -7,11 +7,10 @@ namespace Arbour.Content.NPCs.Global;
 
 internal class DryadShop : GlobalNPC
 {
-    public override void SetupShop(int type, Chest shop, ref int nextSlot)
-    {
-        if (type != NPCID.Dryad)
-            return;
+    public override bool AppliesToEntity(NPC entity, bool lateInstantiation) => entity.type == NPCID.Dryad;
 
-        shop.item[nextSlot++].SetDefaults(ModContent.ItemType<ArborGrassSeeds>());
+    public override void ModifyShop(NPCShop shop)
+    {
+        shop.Add(new NPCShop.Entry(ModContent.ItemType<ArborGrassSeeds>()));
     }
 }

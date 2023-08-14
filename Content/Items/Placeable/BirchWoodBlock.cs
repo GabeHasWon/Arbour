@@ -10,7 +10,7 @@ namespace Arbour.Content.Items.Placeable
         public override void SetDefaults()
         {
             Item.DefaultToPlaceableTile(ModContent.TileType<BirchWoodTile>());
-            SacrificeTotal = 100;
+            Item.ResearchUnlockCount = 100;
         }
 
         public override void AddRecipes()

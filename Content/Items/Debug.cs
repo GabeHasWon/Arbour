@@ -9,7 +9,7 @@ namespace Arbour.Content.Items
 {
 	public class Debug : ModItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("arbor test item");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("arbor test item");
         public override bool IsLoadingEnabled(Mod mod) => false;
 
         public override void SetDefaults()

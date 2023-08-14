@@ -12,7 +12,6 @@ public class ArborLeafWall : ModWall
     {
         Main.wallHouse[Type] = true;
         DustType = DustID.Pumpkin;
-        ItemDrop = ModContent.ItemType<ArborLeafWallBlock>();
         AddMapEntry(new Color(51, 12, 20));
     }
 
