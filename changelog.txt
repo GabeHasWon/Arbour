@@ -4,6 +4,7 @@
 - Added banners for both enemies
 - Added Birch Table, Bathtub
 - Added NPC happiness and dialogue for the Arbor (Mechanic & Cyborg like, Clothier & Painter dislike)
+- Added small mod icon
 
 -- BUGFIXES / PORTING --
 - Ported to 1.4.4

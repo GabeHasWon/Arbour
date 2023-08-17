@@ -31,7 +31,7 @@ public class ArborGrassSeeds : ModItem
 		if (tile.HasTile && tile.TileType == TileID.Dirt && player.InInteractionRange(Player.tileTargetX, Player.tileTargetY, TileReachCheckSettings.Simple)) 
 		{
 			tile.TileType = (ushort)ModContent.TileType<ArborGrass>();
-			WorldGen.TileFrame(Player.tileTargetX, Player.tileTargetY);
+			WorldGen.SquareTileFrame(Player.tileTargetX, Player.tileTargetY, true);
 
 			if (Main.netMode == NetmodeID.Server)
 				NetMessage.SendTileSquare(-1, Player.tileTargetX, Player.tileTargetY, 1, TileChangeType.None);
