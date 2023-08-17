@@ -1,9 +1,6 @@
-using Arbour.Content.Items.Placeable.BirchFurniture;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -29,12 +26,8 @@ public class BirchWorkbench : ModTile
 		TileObjectData.addTile(Type);
 
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-
-		LocalizedText name = CreateMapEntryName();
-		// name.SetDefault("Work Bench");
-		AddMapEntry(new Color(229, 208, 222), name);
+		AddMapEntry(new Color(229, 208, 222), CreateMapEntryName());
 	}
 
 	public override void NumDust(int x, int y, bool fail, ref int num) => num = fail ? 1 : 3;
-	public override void KillMultiTile(int x, int y, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 32, 16, ModContent.ItemType<BirchWorkbenchBlock>());
 }

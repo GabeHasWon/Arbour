@@ -1,17 +1,18 @@
+using Arbour.Content.Tiles.Multitiles.Furniture;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Arbour.Content.Items.Placeable.BirchFurniture;
 
-public class BirchChairBlock : ModItem
+public class BirchTableBlock : ModItem
 {
     public override void SetStaticDefaults() => Item.ResearchUnlockCount = 1;
-    public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Multitiles.Furniture.BirchChair>());
+    public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<BirchTable>());
 
     public override void AddRecipes()
     {
         CreateRecipe(1).
-            AddIngredient<BirchWoodBlock>(4).
+            AddIngredient<BirchWoodBlock>(10).
             AddTile(TileID.WorkBenches).
             Register();
     }

@@ -8,11 +8,7 @@ namespace Arbour.Content.Items.Placeable;
 
 public class ArborGrassSeeds : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Can be placed");
-		Item.ResearchUnlockCount = 100;
-	}
+	public override void SetStaticDefaults() => Item.ResearchUnlockCount = 100;
 
 	public override void SetDefaults()
 	{

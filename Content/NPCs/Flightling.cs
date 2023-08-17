@@ -1,4 +1,5 @@
-﻿using Arbour.Content.Tiles.Blocks;
+﻿using Arbour.Content.Tiles.Banners;
+using Arbour.Content.Tiles.Blocks;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -8,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.NPCs;
 
+[AutoloadBanner]
 public class Flightling : ModNPC
 {
     private bool _leavesBroken = false;
@@ -27,19 +29,21 @@ public class Flightling : ModNPC
         NPC.HitSound = SoundID.Grass;
         NPC.DeathSound = SoundID.DD2_GoblinHurt;
 
-        AIType = NPCID.GoblinScout;
+        AIType = NPCID.Crab;
         SpawnModBiomes = new int[1] { ModContent.GetInstance<ArborBiome>().Type };
     }
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     { 
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-            new FlavorTextBestiaryInfoElement("An absolute rascal. Tends to push you around but is easily scared."),
+            new FlavorTextBestiaryInfoElement("Mods.Arbour.NPCs.Flightling.Bestiary"),
         });
     }
 
     public override bool PreAI()
     {
+        NPC.velocity.X *= 0.95f;
+
         if (NPC.velocity.X != 0)
             NPC.spriteDirection = -Math.Sign(NPC.velocity.X);
 

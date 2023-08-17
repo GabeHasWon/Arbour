@@ -38,7 +38,6 @@ namespace Arbour.Content.Tiles.Multitiles
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Sapling");
 			AddMapEntry(new Color(99, 95, 119), name);
 
 			TileID.Sets.TreeSapling[Type] = true;

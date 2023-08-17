@@ -29,6 +29,7 @@ public class BirchChair : ModTile
 
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 		AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.Chair"));
+		RegisterItemDrop(ModContent.ItemType<BirchChairBlock>());
 
 		DustType = ModContent.DustType<BirchDust>();
 		AdjTiles = new int[] { TileID.Chairs };
@@ -46,7 +47,6 @@ public class BirchChair : ModTile
 	}
 
 	public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-	public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<BirchChairBlock>());
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => settings.player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance);
 
 	public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info)

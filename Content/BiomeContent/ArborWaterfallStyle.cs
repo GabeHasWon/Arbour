@@ -1,8 +1,7 @@
 using Terraria.ModLoader;
 
-namespace Arbour.Content.BiomeContent
+namespace Arbour.Content.BiomeContent;
+
+public class ArborWaterfallStyle : ModWaterfallStyle
 {
-    public class ArborWaterfallStyle : ModWaterfallStyle
-	{
-	}
 }

@@ -34,7 +34,6 @@ public class BirchDoorClosed : ModTile
 
 		// Names
 		LocalizedText name = CreateMapEntryName();
-		// name.SetDefault("Birch Door");
 		AddMapEntry(new Color(200, 200, 200), name);
 
 		// Placement
@@ -59,7 +58,6 @@ public class BirchDoorClosed : ModTile
 
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 	public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
-	public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 48, ModContent.ItemType<BirchDoorBlock>());
 
 	public override void MouseOver(int i, int j)
 	{

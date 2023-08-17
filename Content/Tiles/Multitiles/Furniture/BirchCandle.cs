@@ -28,14 +28,7 @@ namespace Arbour.Content.Tiles.Multitiles.Furniture
             TileObjectData.addTile(Type);
 
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-
             AddMapEntry(new Color(168, 165, 183), CreateMapEntryName());
-        }
-
-        public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
-        {
-            if (!fail && !noItem)
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.BirchFurniture.BirchWoodCandleBlock>());
         }
 
         public override void HitWire(int i, int j)

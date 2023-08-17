@@ -6,11 +6,8 @@ namespace Arbour.Content.Items.Placeable.BirchFurniture;
 
 public class BirchPlatformBlock : ModItem
 {
-    public override void SetDefaults()
-    {
-        Item.DefaultToPlaceableTile(ModContent.TileType<BirchPlatformTile>());
-        Item.ResearchUnlockCount = 100;
-    }
+    public override void SetStaticDefaults() => Item.ResearchUnlockCount = 100;
+    public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<BirchPlatformTile>());
 
     public override void AddRecipes()
     {

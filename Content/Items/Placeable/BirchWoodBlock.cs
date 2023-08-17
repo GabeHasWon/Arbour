@@ -7,11 +7,8 @@ namespace Arbour.Content.Items.Placeable
 {
     public class BirchWoodBlock : ModItem
 	{
-        public override void SetDefaults()
-        {
-            Item.DefaultToPlaceableTile(ModContent.TileType<BirchWoodTile>());
-            Item.ResearchUnlockCount = 100;
-        }
+        public override void SetStaticDefaults() => Item.ResearchUnlockCount = 100;
+        public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<BirchWoodTile>());
 
         public override void AddRecipes()
         {

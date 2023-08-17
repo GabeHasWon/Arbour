@@ -1,0 +1,32 @@
+MapObject.Microbirch: Microbirch
+
+Tiles: {
+	MicrobirchSapling.MapEntry: Microbirch Sapling
+	Microbirch.MapEntry: Microbirch
+	BirchWorkbench.MapEntry: Birch Workbench
+	BirchDoorOpen.MapEntry: Birch Door
+	BirchDoorClosed.MapEntry: Birch Door
+	BirchCandle.MapEntry: Birch Candle
+	ArborSapling.MapEntry: Sapling
+}
+
+Biomes: {
+	ArborBiome: {
+		TownNPCDialogueName: the Arbour
+		DisplayName: Arbour
+	}
+}
+
+Projectiles: {
+	MispiritLeaves.DisplayName: Mispirit Leaves
+	FallingMicrobirch.DisplayName: Falling Microbirch
+}
+
+MusicDisplay: {
+	ModName: Arbor
+
+	Day: {
+		DisplayName: Floating Fall (Arbor Day Theme, Unfinished)
+		Author: by Heltonyan
+	}
+}

@@ -7,11 +7,8 @@ namespace Arbour.Content.Items.Placeable.BirchFurniture;
 
 public class BirchWoodWallBlock : ModItem
 {
-	public override void SetDefaults()
-    {
-        Item.DefaultToPlaceableWall((ushort)ModContent.WallType<BirchWoodWall>());
-        Item.ResearchUnlockCount = 400;
-    }
+    public override void SetStaticDefaults() => Item.ResearchUnlockCount = 400;
+    public override void SetDefaults() => Item.DefaultToPlaceableWall((ushort)ModContent.WallType<BirchWoodWall>());
 
     public override void AddRecipes()
     {

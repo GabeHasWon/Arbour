@@ -6,11 +6,8 @@ namespace Arbour.Content.Items.Placeable;
 
 public class ArborLeafWallBlock : ModItem
 {
-    public override void SetDefaults()
-    {
-        Item.DefaultToPlaceableWall((ushort)ModContent.WallType<ArborLeafWall>());
-        Item.ResearchUnlockCount = 400;
-    }
+    public override void SetStaticDefaults() => Item.ResearchUnlockCount = 400;
+    public override void SetDefaults() => Item.DefaultToPlaceableWall((ushort)ModContent.WallType<ArborLeafWall>());
 
     public override void AddRecipes()
     {

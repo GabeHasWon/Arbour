@@ -1,0 +1,84 @@
+ArborGrassSeeds: {
+	DisplayName: Arbor Grass Seeds
+	Tooltip: Can be placed on dirt
+}
+
+ArborLeafWallBlock: {
+	DisplayName: Arbor Leaf Wall
+	Tooltip: ""
+}
+
+BirchChairBlock: {
+	DisplayName: Birch Chair
+	Tooltip: ""
+}
+
+BirchDoorBlock: {
+	DisplayName: Birch Door
+	Tooltip: ""
+}
+
+BirchFenceBlock: {
+	DisplayName: Birch Fence
+	Tooltip: ""
+}
+
+BirchLanternBlock: {
+	DisplayName: Birch Lantern
+	Tooltip: ""
+}
+
+BirchPlatformBlock: {
+	DisplayName: Birch Platform
+	Tooltip: ""
+}
+
+BirchWoodCandleBlock: {
+	DisplayName: Birch Candle
+	Tooltip: ""
+}
+
+BirchWoodLampBlock: {
+	DisplayName: Birch Lamp
+	Tooltip: ""
+}
+
+BirchWoodWallBlock: {
+	DisplayName: Birch Wall
+	Tooltip: ""
+}
+
+BirchWorkbenchBlock: {
+	DisplayName: Birch Workbench
+	Tooltip: ""
+}
+
+BirchWoodBlock: {
+	DisplayName: Birch Block
+	Tooltip: ""
+}
+
+MicrobirchAcorn: {
+	DisplayName: Microbirch Acorn
+	Tooltip: Can only be placed on ceilings
+}
+
+FlightlingBannerItem: {
+	DisplayName: Flightling Banner
+	Tooltip: ""
+}
+
+BrushToothBannerItem: {
+	DisplayName: Brush Tooth Banner
+	Tooltip: ""
+}
+
+BirchBathtubBlock: {
+	DisplayName: Birch Bathtub Block
+	Tooltip: ""
+}
+
+BirchTableBlock: {
+	DisplayName: Birch Table Block
+	Tooltip: ""
+}

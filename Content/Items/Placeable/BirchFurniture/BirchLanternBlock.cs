@@ -5,11 +5,8 @@ namespace Arbour.Content.Items.Placeable.BirchFurniture;
 
 public class BirchLanternBlock : ModItem
 {
-    public override void SetDefaults() 
-    {
-        Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Multitiles.Furniture.BirchLantern>());
-        Item.ResearchUnlockCount = 100;
-    }
+    public override void SetStaticDefaults() => Item.ResearchUnlockCount = 1;
+    public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Multitiles.Furniture.BirchLantern>());
 
     public override void AddRecipes()
     {

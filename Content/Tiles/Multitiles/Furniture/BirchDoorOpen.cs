@@ -26,13 +26,11 @@ public class BirchDoorOpen : ModTile
 		TileID.Sets.CloseDoorID[Type] = ModContent.TileType<BirchDoorClosed>();
 
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+        AddMapEntry(new Color(230, 230, 235), CreateMapEntryName());
+		RegisterItemDrop(ModContent.ItemType<BirchDoorBlock>());
 
-		DustType = ModContent.DustType<Dusts.BirchDust>();
+        DustType = ModContent.DustType<Dusts.BirchDust>();
 		AdjTiles = new int[] { TileID.OpenDoor };
-
-		LocalizedText name = CreateMapEntryName();
-		// name.SetDefault("Birch Door");
-		AddMapEntry(new Color(230, 230, 235), name);
 
 		TileObjectData.newTile.Width = 2;
 		TileObjectData.newTile.Height = 3;
@@ -77,7 +75,6 @@ public class BirchDoorOpen : ModTile
 
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 	public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
-	public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<BirchDoorBlock>());
 
 	public override void MouseOver(int i, int j)
 	{

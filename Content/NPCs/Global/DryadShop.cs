@@ -11,6 +11,7 @@ internal class DryadShop : GlobalNPC
 
     public override void ModifyShop(NPCShop shop)
     {
-        shop.Add(new NPCShop.Entry(ModContent.ItemType<ArborGrassSeeds>()));
+        if (shop.NpcType == NPCID.Dryad)
+            shop.Add(new NPCShop.Entry(ModContent.ItemType<ArborGrassSeeds>()));
     }
 }
