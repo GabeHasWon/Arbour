@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.Tiles.Multitiles.Furniture;
 
-public class BirchBathtub : BathtubTile
+public class BirchBed : BedTile
 {
-    protected override SpecificTileInfo SpecificInfo => new(ModContent.ItemType<BirchBathtubBlock>(), ModContent.DustType<BirchDust>(), new Color(124, 93, 68));
+    protected override SpecificTileInfo SpecificInfo => new(ModContent.ItemType<BirchBedBlock>(), ModContent.DustType<BirchDust>(), new Color(124, 93, 68));
 }

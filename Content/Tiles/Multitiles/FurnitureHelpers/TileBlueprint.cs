@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.Tiles.Multitiles.FurnitureHelpers;
 
-public abstract class TileBlueprint<T> : ModTile where T : ModItem
+public abstract class TileBlueprint : ModTile
 {
     protected abstract StaticTileInfo StaticInfo { get; }
     protected abstract SpecificTileInfo SpecificInfo { get; }
@@ -12,6 +12,7 @@ public abstract class TileBlueprint<T> : ModTile where T : ModItem
     {
         Defaults();
         AddMapEntry(SpecificInfo.MapColor, Language.GetText(StaticInfo.MapKeyName));
+        RegisterItemDrop(SpecificInfo.Drop);
 
         AdjTiles = StaticInfo.AdjTypes;
         DustType = SpecificInfo.DustType;

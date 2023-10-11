@@ -91,15 +91,19 @@ namespace Arbour.Content.Projectiles.Environmental
                 {
                     for (int i = 0; i < 4; ++i)
                         Gore.NewGore(Terraria.Entity.InheritSource(Projectile), realPos, Vector2.Zero, Mod.Find<ModGore>("OrangeLeaf").Type);
-                    
-                    Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<MicrobirchAcorn>());
+
+                    int item = Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<MicrobirchAcorn>(), noBroadcast: true);
+                    NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item);
                     SoundEngine.PlaySound(SoundID.Grass, realPos);
                 }
                 else
                     SoundEngine.PlaySound(SoundID.Dig, realPos);
 
                 if (!Main.rand.NextBool(5))
-                    Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<BirchWoodBlock>());
+                {
+                    int item = Item.NewItem(Terraria.Entity.InheritSource(Projectile), realPos, tileDrawState.frame.X, tileDrawState.frame.Y, ModContent.ItemType<BirchWoodBlock>(), noBroadcast: true);
+                    NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item);
+                }
             }
 
             if (Collision.SolidCollision(realPos, tileDrawState.frame.X, tileDrawState.frame.Y)) //Tile collision check

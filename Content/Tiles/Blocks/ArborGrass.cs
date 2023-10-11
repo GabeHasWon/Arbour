@@ -37,11 +37,16 @@ public class ArborGrass : ModTile
 
 		if (!tile.HasTile)
 		{
+			bool success = false;
+
 			if (Main.rand.NextBool(220))
-				WorldGen.PlaceTile(i, j + 1, ModContent.TileType<MicrobirchSapling>(), true);
+                success = WorldGen.PlaceTile(i, j + 1, ModContent.TileType<MicrobirchSapling>(), true);
 			else if (Main.rand.NextBool(10))
-				WorldGen.PlaceTile(i, j + 1, ModContent.TileType<ArborVines>(), true);
-		}
+                success = WorldGen.PlaceTile(i, j + 1, ModContent.TileType<ArborVines>(), true);
+
+			if (success)
+                NetMessage.SendTileSquare(-1, i, j + 1, 1, TileChangeType.None);
+        }
 
 		//Try spread grass
 		if (TileHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)

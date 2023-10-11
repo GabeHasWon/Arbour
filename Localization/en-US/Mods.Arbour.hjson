@@ -30,3 +30,14 @@ MusicDisplay: {
 		Author: by Heltonyan
 	}
 }
+
+Configs: {
+	ArborConfig: {
+		DisplayName: Arbor Config
+
+		CustomMusic: {
+			Label: Custom Music
+			Tooltip: ""
+		}
+	}
+}

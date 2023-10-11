@@ -16,11 +16,13 @@ public readonly struct StaticTileInfo
 
 public readonly struct SpecificTileInfo
 {
+    public readonly int Drop;
     public readonly int DustType;
     public readonly Color MapColor;
 
-    public SpecificTileInfo(int dustType, Color mapColor)
+    public SpecificTileInfo(int drop, int dustType, Color mapColor)
     {
+        Drop = drop;
         DustType = dustType;
         MapColor = mapColor;
     }

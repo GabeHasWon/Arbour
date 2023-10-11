@@ -64,6 +64,8 @@ internal class Microbirch : ModTile
                     Gore.NewGore(new EntitySource_TileUpdate(x, y + i), new Vector2(x, y + i) * 16, Vector2.Zero, ModContent.GetInstance<Arbour>().Find<ModGore>("OrangeLeaf").Type, 1f);
             }
         }
+
+        NetMessage.SendTileSquare(-1, x, y, 1, length, TileChangeType.None);
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
@@ -118,6 +120,8 @@ internal class Microbirch : ModTile
 
             FallingMicrobirch microbirch = birch.ModProjectile as FallingMicrobirch;
             microbirch.States = states;
+
+            NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
 
             KillingMicrobirch = false;
         }

@@ -92,5 +92,5 @@ public class BrushTooth : ModNPC
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() && !Main.dayTime ? 0.3f : 0f;
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() && !Main.dayTime ? 1f : 0f;
 }

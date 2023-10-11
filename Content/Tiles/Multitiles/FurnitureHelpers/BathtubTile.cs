@@ -8,7 +8,7 @@ using Terraria.ObjectData;
 
 namespace Arbour.Content.Tiles.Multitiles.FurnitureHelpers;
 
-public abstract class BathtubTile<T> : TileBlueprint<T> where T : ModItem
+public abstract class BathtubTile : TileBlueprint
 {
     protected override StaticTileInfo StaticInfo => new StaticTileInfo("ItemName.Bathtub", TileID.Bathtubs);
 

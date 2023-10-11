@@ -5,7 +5,7 @@ ArborGrassSeeds: {
 
 ArborLeafWallBlock: {
 	DisplayName: Arbor Leaf Wall
-	Tooltip: ""
+	Tooltip: "'Smells of falling leaves and memories'"
 }
 
 BirchChairBlock: {
@@ -54,7 +54,7 @@ BirchWorkbenchBlock: {
 }
 
 BirchWoodBlock: {
-	DisplayName: Birch Block
+	DisplayName: Birch Wood
 	Tooltip: ""
 }
 
@@ -74,11 +74,21 @@ BrushToothBannerItem: {
 }
 
 BirchBathtubBlock: {
-	DisplayName: Birch Bathtub Block
+	DisplayName: Birch Bathtub
 	Tooltip: ""
 }
 
 BirchTableBlock: {
-	DisplayName: Birch Table Block
+	DisplayName: Birch Table
+	Tooltip: ""
+}
+
+BirchBedBlock: {
+	DisplayName: Birch Bed
+	Tooltip: ""
+}
+
+BirchChandelierBlock: {
+	DisplayName: Birch Chandelier
 	Tooltip: ""
 }

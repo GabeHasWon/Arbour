@@ -32,12 +32,12 @@ namespace Arbour.Content.Tiles
             { 
                 int width = data.Width;
                 int height = data.Height;
+                int x = i + data.Origin.X - width + 1;
+                int y = j + data.Origin.Y - height;
 
                 if (!AreaClear(i, j - height, width, height, forceIfPossible))
                     return false;
-
-                int x = i + data.Origin.X - width + 1;
-                int y = j + data.Origin.Y - height;
+                
                 int useStyle = style == -1 ? Main.rand.Next(data.RandomStyleRange) : style;
 
                 WorldGen.PlaceObject(x, y, type, mute, useStyle);

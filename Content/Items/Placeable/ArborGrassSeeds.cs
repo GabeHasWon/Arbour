@@ -26,16 +26,17 @@ public class ArborGrassSeeds : ModItem
 
 	public override bool? UseItem(Player player)
 	{
-		Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
-
-		if (tile.HasTile && tile.TileType == TileID.Dirt && player.InInteractionRange(Player.tileTargetX, Player.tileTargetY, TileReachCheckSettings.Simple)) 
+		if (Main.myPlayer == player.whoAmI)
 		{
-			tile.TileType = (ushort)ModContent.TileType<ArborGrass>();
-			WorldGen.SquareTileFrame(Player.tileTargetX, Player.tileTargetY, true);
+			Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
 
-			if (Main.netMode == NetmodeID.Server)
+			if (tile.HasTile && tile.TileType == TileID.Dirt && player.InInteractionRange(Player.tileTargetX, Player.tileTargetY, TileReachCheckSettings.Simple))
+			{
+				tile.TileType = (ushort)ModContent.TileType<ArborGrass>();
+				WorldGen.SquareTileFrame(Player.tileTargetX, Player.tileTargetY, true);
 				NetMessage.SendTileSquare(-1, Player.tileTargetX, Player.tileTargetY, 1, TileChangeType.None);
-			return true;
+				return true;
+			}
 		}
 		return false;
 	}

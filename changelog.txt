@@ -1,15 +1,1 @@
-﻿-- ADDITIONS --
-- Added Music Display compatibility
-- Added Brush Tooth enemy
-- Added banners for both enemies
-- Added Birch Table, Bathtub
-- Added NPC happiness and dialogue for the Arbor (Mechanic & Cyborg like, Clothier & Painter dislike)
-- Added small mod icon
-
--- BUGFIXES / PORTING --
-- Ported to 1.4.4
-- Updated localization
-- Updated Flightling bestiary entry & behaviour
-- Fixed Microbirch falling issue
-- Fixed tall grasses not respawning
-- Updated research counts for furniture
+﻿- Heavily increased spawn rates for Flightling and Brush Tooth
