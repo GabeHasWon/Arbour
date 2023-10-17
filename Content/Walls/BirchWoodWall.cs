@@ -11,6 +11,8 @@ public class BirchWoodWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
+        WallID.Sets.AllowsPlantsToGrow[Type] = true;
+
         DustType = DustID.Pumpkin;
         AddMapEntry(new Color(230, 230, 235) * 0.4f);
     }

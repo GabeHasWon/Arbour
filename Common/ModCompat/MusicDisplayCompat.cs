@@ -20,5 +20,6 @@ internal class MusicDisplayCompat : ModSystem
         }
 
         AddMusic("Assets/Music/Day", "Day");
+        AddMusic("Assets/Music/DayOld", "DayOld");
     }
 }

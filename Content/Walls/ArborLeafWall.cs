@@ -11,6 +11,8 @@ public class ArborLeafWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
+        WallID.Sets.AllowsPlantsToGrow[Type] = true;
+
         DustType = DustID.Pumpkin;
         AddMapEntry(new Color(51, 12, 20));
     }

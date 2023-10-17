@@ -17,9 +17,9 @@ internal class ArborBiome : ModBiome
 
     private int GetMusic()
     {
-        if (ModContent.GetInstance<ArborConfig>().CustomMusic)
+        if (ModContent.GetInstance<ArborConfig>().NewMusic)
             return MusicLoader.GetMusicSlot(Mod, "Assets/Music/Day");
-        return -1;
+        return MusicLoader.GetMusicSlot(Mod, "Assets/Music/DayOld");
     }
 
     public override string BestiaryIcon => $"Arbour/Assets/Misc/{nameof(ArborBiome)}_Icon";

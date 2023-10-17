@@ -138,8 +138,7 @@ internal class Microbirch : ModTile
         if (tile.TileFrameX == TreeBottomFrame)
         {
             Texture2D tex = Mod.Assets.Request<Texture2D>("Content/Tiles/Custom/MicrobirchBottom").Value;
-
-            TileSwaySystem.DrawTreeSway(i, j, tex, new Rectangle(Main.tile[i, j - 1].TileFrameX / 18 * 50, 0, 48, 42), new Vector2(6, 0), new Vector2(24, 0), true);
+            TileSwaySystem.DrawTreeSway(i, j, tex, new Rectangle(Main.tile[i, j - 1].TileFrameX / 18 * 50, 0, 48, 42), new Vector2(6, 0), new Vector2(24, 0), true, -1);
             return false;
         }
         return true;

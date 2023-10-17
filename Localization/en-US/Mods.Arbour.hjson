@@ -8,6 +8,7 @@ Tiles: {
 	BirchDoorClosed.MapEntry: Birch Door
 	BirchCandle.MapEntry: Birch Candle
 	ArborSapling.MapEntry: Sapling
+	BirchDresser.MapEntry: Birch Dresser
 }
 
 Biomes: {
@@ -25,9 +26,14 @@ Projectiles: {
 MusicDisplay: {
 	ModName: Arbor
 
-	Day: {
-		DisplayName: Floating Fall (Arbor Day Theme, Unfinished)
+	DayOld: {
+		DisplayName: Floating Fall (Old Arbor Theme)
 		Author: by Heltonyan
+	}
+
+	Day: {
+		DisplayName: Starlit Winds (Arbor Theme)
+		Author: by GabeHasWon
 	}
 }
 
@@ -35,9 +41,9 @@ Configs: {
 	ArborConfig: {
 		DisplayName: Arbor Config
 
-		CustomMusic: {
-			Label: Custom Music
-			Tooltip: ""
+		NewMusic: {
+			Label: New Music
+			Tooltip: If false, uses the old, unfinished song by Heltonyan. Defaults to true.
 		}
 	}
 }

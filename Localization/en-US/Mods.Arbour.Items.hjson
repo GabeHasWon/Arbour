@@ -92,3 +92,8 @@ BirchChandelierBlock: {
 	DisplayName: Birch Chandelier
 	Tooltip: ""
 }
+
+BirchDresserBlock: {
+	DisplayName: Birch Dresser
+	Tooltip: ""
+}

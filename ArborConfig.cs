@@ -9,5 +9,5 @@ public class ArborConfig : ModConfig
     public override ConfigScope Mode => ConfigScope.ClientSide;
 
     [DefaultValue(true)]
-    public bool CustomMusic { get; set; }
+    public bool NewMusic { get; set; }
 }

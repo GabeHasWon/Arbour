@@ -53,13 +53,13 @@ public class ArborGrass : ModTile
 			NetMessage.SendTileSquare(-1, i, j, 3, TileChangeType.None);
 
 		//Spawn hay foliage
-		if (Main.rand.NextBool(14) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
+		if (Main.rand.NextBool(60) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
 			return;
 
-		if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
+		if (Main.rand.NextBool(48) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
 			return;
 
-		if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x1>(), forceIfPossible: false))
+		if (Main.rand.NextBool(40) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x1>(), forceIfPossible: false))
 			return;
 	}
 }

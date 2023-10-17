@@ -55,12 +55,12 @@ namespace Arbour.Content.Tiles.Multitiles
 
 		public override void RandomUpdate(int i, int j)
 		{
-			if (!WorldGen.genRand.NextBool(20))
+			if (!WorldGen.genRand.NextBool(10))
 				return;
 
 			bool growSucess = WorldGen.GrowTree(i, j);
 			bool isPlayerNear = WorldGen.PlayerLOS(i, j);
-
+			
 			if (growSucess && isPlayerNear)
 				WorldGen.TreeGrowFXCheck(i, j);
 		}
