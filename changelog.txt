@@ -1,9 +1,1 @@
-﻿- Added new Day track by me
-- Changed Custom Music config to New Music
-- Made both tracks just the Arbor theme instead of Arbor Day
-- Made Arbor saplings grow more often
-- Made hay grass spawn on Arbor Grass *way* less often
-- Added Rubblemaker support to all non-growable, non-placeable decor tiles
-- Made all Arbor walls allow growth in front of them
-- Fixed Microbirch swaying in the wrong direction
-- Added Birch Dresser
+﻿- Fixed worlds not generating on servers

@@ -60,8 +60,11 @@ internal class Microbirch : ModTile
                 t.TileFrameX = TreeBottomFrame;
                 lastWasBottom = true;
 
-                for (int j = 0; j < 4; ++j)
-                    Gore.NewGore(new EntitySource_TileUpdate(x, y + i), new Vector2(x, y + i) * 16, Vector2.Zero, ModContent.GetInstance<Arbour>().Find<ModGore>("OrangeLeaf").Type, 1f);
+                if (Main.netMode != NetmodeID.Server)
+                {
+                    for (int j = 0; j < 4; ++j)
+                        Gore.NewGore(new EntitySource_TileUpdate(x, y + i), new Vector2(x, y + i) * 16, Vector2.Zero, ModContent.GetInstance<Arbour>().Find<ModGore>("OrangeLeaf").Type, 1f);
+                }
             }
         }
 
