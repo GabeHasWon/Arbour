@@ -1,1 +1,2 @@
-﻿- Fixed worlds not generating on servers
+﻿- Updated map background for Arbor
+- Added floating islands in the background for Arbor
