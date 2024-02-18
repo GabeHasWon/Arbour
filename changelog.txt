@@ -1,2 +1,3 @@
-﻿- Updated map background for Arbor
-- Added floating islands in the background for Arbor
+﻿- Added description to No Music config option
+- Added Arbor Flower wall
+- Updated world generation to include the flower wall

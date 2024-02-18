@@ -97,3 +97,18 @@ BirchDresserBlock: {
 	DisplayName: Birch Dresser
 	Tooltip: ""
 }
+
+ArborPylonItem: {
+	DisplayName: Arbor Pylon
+	Tooltip: ""
+}
+
+Debug: {
+	DisplayName: Debug
+	Tooltip: ""
+}
+
+ArborFlowerWallBlock: {
+	DisplayName: Arbor Flower Wall Block
+	Tooltip: ""
+}

@@ -20,8 +20,12 @@ internal class ArborBiome : ModBiome
 
     private int GetMusic()
     {
+        if (ModContent.GetInstance<ArborConfig>().NoMusic)
+            return -1;
+
         if (ModContent.GetInstance<ArborConfig>().NewMusic)
             return MusicLoader.GetMusicSlot(Mod, "Assets/Music/Day");
+
         return MusicLoader.GetMusicSlot(Mod, "Assets/Music/DayOld");
     }
 
@@ -56,13 +60,8 @@ public class ArborTileCount : ModSystem
     public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts) => arborCount = tileCounts[ModContent.TileType<ArborGrass>()];
 }
 
-public class PuritySpiritScreenShaderData : ScreenShaderData
+public class PuritySpiritScreenShaderData(string passName) : ScreenShaderData(passName)
 {
-    public PuritySpiritScreenShaderData(string passName)
-        : base(passName)
-    {
-    }
-
     public override void Apply()
     {
         base.Apply();

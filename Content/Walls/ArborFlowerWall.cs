@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace Arbour.Content.Walls;
 
-public class ArborLeafWall : ModWall
+public class ArborFlowerWall : ModWall
 {
     public override void SetStaticDefaults()
     {
@@ -19,7 +19,7 @@ public class ArborLeafWall : ModWall
     public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 }
 
-public class ArborLeafWall_Unsafe : ModWall
+public class ArborFlowerWall_Unsafe : ModWall
 {
     public override string Texture => base.Texture.Replace("_Unsafe", "");
 

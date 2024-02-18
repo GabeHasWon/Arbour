@@ -9,6 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Content\Tiles\Multitiles\Furniture\BirchTable.png" />
+    <None Remove="Content\Tiles\TileEntity\ArborPylonTile.png" />
     <None Remove="Localization\en-US_Mods.Arbour.Dialogue.hjson" />
     <None Remove="Localization\Mods.Arbour.Items.hjson" />
     <None Remove="Localization\Mods.Arbour.NPCs.hjson" />

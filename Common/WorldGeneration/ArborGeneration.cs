@@ -115,41 +115,64 @@ internal class ArborGeneration
     private static void GrowStuffOnGrass(List<Point16> topGrass)
     {
         foreach (var item in topGrass)
-        {
-            if (Main.rand.NextBool(2) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<ArborSapling>(), mute: true, forceIfPossible: false))
-            {
-                if (WorldGen.GrowTree(item.X, item.Y - 2))
-                    continue;
-                else
-                    WorldGen.KillTile(item.X, item.Y - 1);
-            }
-
-            TryPlaceLeafWalls(item);
-        }
+            TryGrowTreeAndWalls(item);
 
         foreach (var item in topGrass)
+            PlaceDecor(item);
+    }
+
+    internal static void TryGrowTreeAndWalls(Point16 item)
+    {
+        if (Main.rand.NextBool(2) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<ArborSapling>(), mute: true, forceIfPossible: false))
         {
-            if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<FloorFoliage2x2>(), mute: true, forceIfPossible: false))
-                continue;
+            if (RemixedGeneration.TreeSettings.GroundTest is null)
+            {
+                RemixedGeneration.TreeSettings = new WorldGen.GrowTreeSettings
+                {
+                    GroundTest = RemixedGeneration.ArborTreeGroundTest,
+                    WallTest = (_) => true,
+                    TreeHeightMax = 12,
+                    TreeHeightMin = 7,
+                    TreeTileType = TileID.Trees,
+                    TreeTopPaddingNeeded = 4,
+                    SaplingTileType = (ushort)ModContent.TileType<ArborSapling>()
+                };
+            }
 
-            if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<BigPinecone2x2>(), mute: true, forceIfPossible: false))
-                continue;
+            bool growTree = !WorldGen.remixWorldGen ? WorldGen.GrowTree(item.X, item.Y - 2) : 
+                WorldGen.GrowTreeWithSettings(item.X, item.Y - 2, RemixedGeneration.TreeSettings);
 
-            if (Main.rand.NextBool(8) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x3>(), mute: true, forceIfPossible: false))
-                continue;
-
-            if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<FloorFoliage2x1>(), mute: true, forceIfPossible: false))
-                continue;
-
-            if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x2>(), mute: true, forceIfPossible: false))
-                continue;
-
-            if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<PineconeSmall>(), mute: true, forceIfPossible: false))
-                continue;
-
-            if (TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x1>(), mute: true, forceIfPossible: false))
-                continue;
+            if (growTree)
+                return;
+            else
+                WorldGen.KillTile(item.X, item.Y - 1);
         }
+
+        TryPlaceLeafWalls(item);
+    }
+
+    internal static void PlaceDecor(Point16 item)
+    {
+        if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<FloorFoliage2x2>(), mute: true, forceIfPossible: false))
+            return;
+
+        if (Main.rand.NextBool(10) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<BigPinecone2x2>(), mute: true, forceIfPossible: false))
+            return;
+
+        if (Main.rand.NextBool(8) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x3>(), mute: true, forceIfPossible: false))
+            return;
+
+        if (Main.rand.NextBool(7) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<FloorFoliage2x1>(), mute: true, forceIfPossible: false))
+            return;
+
+        if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x2>(), mute: true, forceIfPossible: false))
+            return;
+
+        if (Main.rand.NextBool(3) && TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<PineconeSmall>(), mute: true, forceIfPossible: false))
+            return;
+
+        if (TileHelper.TryPlaceProperly(item.X, item.Y, ModContent.TileType<Hay1x1>(), mute: true, forceIfPossible: false))
+            return;
     }
 
     private static void TryPlaceLeafWalls(Point16 item)
@@ -160,16 +183,27 @@ internal class ArborGeneration
         int width = Random.Next(3, 7);
         int height = Random.Next(8, 18);
 
+        SpamWalls(item, width, height);
+    }
+
+    internal static void SpamWalls(Point16 item, int width, int height)
+    {
         for (int i = item.X - width; i < item.X + width; ++i)
         {
+            if (!WorldGen.InWorld(i, Main.maxTilesY / 2))
+                break;
+
             for (int j = item.Y - height; j < item.Y + height; ++j)
             {
+                if (!WorldGen.InWorld(i, j))
+                    break;
+
                 int xDist = (int)Math.Pow(i - item.X, 2);
                 int yDist = (int)(Math.Pow(j - item.Y, 2) / (height / width));
                 int distance = xDist + yDist;
 
                 if (distance < (height + width) / 2)
-                    WorldGen.PlaceWall(i, j, ModContent.WallType<ArborLeafWall_Unsafe>());
+                    WorldGen.PlaceWall(i, j, Random.NextBool(8) ? ModContent.WallType<ArborFlowerWall_Unsafe>() : ModContent.WallType<ArborLeafWall_Unsafe>());
             }
         }
     }
@@ -199,14 +233,17 @@ internal class ArborGeneration
         if (Main.rand.NextBool(6))
             Microbirch.SpawnAt(i, placeY + 1);
         else
+            PlaceVines(i, placeY);
+    }
+
+    internal static void PlaceVines(int i, int placeY)
+    {
+        int len = Random.Next(5, 20);
+        for (int j = 0; j < len; ++j)
         {
-            int len = Random.Next(5, 20);
-            for (int j = 0; j < len; ++j)
-            {
-                if (Main.tile[i, placeY + j + 1].HasTile)
-                    break;
-                WorldGen.PlaceTile(i, placeY + j + 1, ModContent.TileType<ArborVines>());
-            }
+            if (Main.tile[i, placeY + j + 1].HasTile)
+                break;
+            WorldGen.PlaceTile(i, placeY + j + 1, ModContent.TileType<ArborVines>());
         }
     }
 

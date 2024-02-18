@@ -1,6 +1,5 @@
 using Arbour.Common.WorldGeneration;
 using Arbour.Content.Walls;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,16 +28,8 @@ namespace Arbour.Content.Items
 
         public override bool? UseItem(Player player)
         {
-            //Microbirch.SpawnAt(Main.MouseWorld.ToTileCoordinates());
-
-            Point pos = Main.MouseWorld.ToTileCoordinates();
-            //int len = Main.rand.Next(6, 18);
-            //for (int i = 0; i < len; ++i)
-            //    WorldGen.PlaceTile(pos.X, pos.Y + i, ModContent.TileType<ArborVines>());
-            //TileHelper.TryPlaceProperly(pos, ModContent.TileType<Hay1x3>(), forceIfPossible: true);
-            ArborGeneration.BuildSingleIsland(pos.X, pos.Y);
-            //WorldGen.PlaceObject(pos.X, pos.Y, ModContent.TileType<ArborSapling>());
-            //Main.NewText(WorldGen.GrowTree(pos.X, pos.Y));
+			var m = Main.MouseWorld.ToTileCoordinates();
+			RemixedGeneration.SpawnPocket(m.X, m.Y);
             return true;
         }
     }

@@ -9,6 +9,7 @@ Tiles: {
 	BirchCandle.MapEntry: Birch Candle
 	ArborSapling.MapEntry: Sapling
 	BirchDresser.MapEntry: Birch Dresser
+	ArborPylonTile.MapEntry: Arbor Pylon
 }
 
 Biomes: {
@@ -45,5 +46,12 @@ Configs: {
 			Label: New Music
 			Tooltip: If false, uses the old, unfinished song by Heltonyan. Defaults to true.
 		}
+
+		NoMusic: {
+			Label: No Music
+			Tooltip: Turns off Arbor's custom music entirely.
+		}
 	}
 }
+
+InBiome: In Arbor

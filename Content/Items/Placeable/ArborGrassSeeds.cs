@@ -8,7 +8,7 @@ namespace Arbour.Content.Items.Placeable;
 
 public class ArborGrassSeeds : ModItem
 {
-	public override void SetStaticDefaults() => Item.ResearchUnlockCount = 100;
+	public override void SetStaticDefaults() => Item.ResearchUnlockCount = 25;
 
 	public override void SetDefaults()
 	{
