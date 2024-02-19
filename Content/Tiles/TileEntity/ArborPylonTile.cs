@@ -72,7 +72,7 @@ internal abstract class SimplePylonTile<T> : ModPylon where T : ModItem
 
     public virtual bool IsSold(int npcType, Player player, bool npcHappyEnough) => true;
     public override NPCShop.Entry GetNPCShopEntry() => new(ModContent.ItemType<T>(), Condition.AnotherTownNPCNearby, Condition.NotInEvilBiome, 
-        Condition.HappyEnoughToSellPylons, new Condition("Mods.Arbour.InBiome", Main.LocalPlayer.InModBiome<ArborBiome>));
+        Condition.HappyEnoughToSellPylons, new Condition("Mods.Arbour.InBiome", () => Main.LocalPlayer.InModBiome<ArborBiome>()));
 
     public override void MouseOver(int i, int j)
     {
