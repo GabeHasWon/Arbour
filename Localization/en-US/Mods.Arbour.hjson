@@ -10,6 +10,8 @@ Tiles: {
 	ArborSapling.MapEntry: Sapling
 	BirchDresser.MapEntry: Birch Dresser
 	ArborPylonTile.MapEntry: Arbor Pylon
+	StarlitWindsBox.MapEntry: Starlit Winds Box
+	FloatingFallBox.MapEntry: Floating Fall Box
 }
 
 Biomes: {

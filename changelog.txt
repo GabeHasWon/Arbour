@@ -1,1 +1,2 @@
-﻿- Fixed Arbor Pylon delegate capture issue
+﻿- Added Starlit Winds, Floating Fall music box
+- Fixed Arbor Flower Wall display name

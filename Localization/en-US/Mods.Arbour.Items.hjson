@@ -109,6 +109,16 @@ Debug: {
 }
 
 ArborFlowerWallBlock: {
-	DisplayName: Arbor Flower Wall Block
+	DisplayName: Arbor Flower Wall
+	Tooltip: ""
+}
+
+StarlitWindsBoxItem: {
+	DisplayName: Music Box (Starlit Winds)
+	Tooltip: ""
+}
+
+FloatingFallBoxItem: {
+	DisplayName: Music Box (Floating Fall)
 	Tooltip: ""
 }
