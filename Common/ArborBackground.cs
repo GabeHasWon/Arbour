@@ -12,18 +12,11 @@ namespace Arbour.Common;
 
 internal class ArborBackground : CustomSky
 {
-    private readonly struct ArborIsland
+    private readonly struct ArborIsland(Vector2 position)
     {
-        public readonly Vector2 Position;
-        public readonly int Type;
-        public readonly float Depth;
-
-        public ArborIsland(Vector2 position)
-        {
-            Position = position;
-            Type = Main.rand.Next(4);
-            Depth = Main.rand.NextFloat(1.2f, 2.5f);
-        }
+        public readonly Vector2 Position = position;
+        public readonly int Type = Main.rand.Next(4);
+        public readonly float Depth = Main.rand.NextFloat(1.2f, 2.5f);
 
         public override string ToString() => $"Pos: {Position}, Type: {Type}, Depth: {Depth}";
     }

@@ -1,2 +1,3 @@
-﻿- Added Starlit Winds, Floating Fall music box
-- Fixed Arbor Flower Wall display name
+﻿1.2.2.4
+- Heavily reduced the spawn rate of Flightlings and Brush Tooths
+- Updated both banners, allowing them to sway in wind, be placed on more tiles, and be more accurate to vanilla's banners

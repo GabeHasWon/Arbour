@@ -1,6 +1,6 @@
-﻿using Arbour.Content.Tiles.Banners;
-using Arbour.Content.Tiles.Blocks;
+﻿using Arbour.Content.Tiles.Blocks;
 using Microsoft.Xna.Framework;
+using NPCUtils;
 using System;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -30,15 +30,10 @@ public class Flightling : ModNPC
         NPC.DeathSound = SoundID.DD2_GoblinHurt;
 
         AIType = NPCID.Crab;
-        SpawnModBiomes = new int[1] { ModContent.GetInstance<ArborBiome>().Type };
+        SpawnModBiomes = [ModContent.GetInstance<ArborBiome>().Type];
     }
 
-    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    { 
-        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-            new FlavorTextBestiaryInfoElement("Mods.Arbour.NPCs.Flightling.Bestiary"),
-        });
-    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
     public override bool PreAI()
     {
@@ -52,6 +47,7 @@ public class Flightling : ModNPC
             ScaredyAI();
             return false;
         }
+
         return true;
     }
 
@@ -93,5 +89,5 @@ public class Flightling : ModNPC
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() ? 1.8f : 0f;
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() ? 0.8f : 0f;
 }

@@ -1,7 +1,7 @@
 ﻿using Arbour.Content.Gores;
-using Arbour.Content.Tiles.Banners;
 using Arbour.Content.Tiles.Blocks;
 using Microsoft.Xna.Framework;
+using NPCUtils;
 using System;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -33,15 +33,10 @@ public class BrushTooth : ModNPC
         NPC.DeathSound = SoundID.DD2_GoblinHurt;
         NPC.noGravity = true;
 
-        SpawnModBiomes = new int[1] { ModContent.GetInstance<ArborBiome>().Type };
+        SpawnModBiomes = [ModContent.GetInstance<ArborBiome>().Type];
     }
 
-    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    { 
-        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-            new FlavorTextBestiaryInfoElement("Mods.Arbour.NPCs.BrushTooth.Bestiary"),
-        });
-    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
     public override void AI()
     {
@@ -92,5 +87,5 @@ public class BrushTooth : ModNPC
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() && !Main.dayTime ? 1f : 0f;
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == ModContent.TileType<ArborGrass>() && !Main.dayTime ? 0.4f : 0f;
 }

@@ -13,5 +13,8 @@
     <None Remove="Localization\Mods.Arbour.NPCs.hjson" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="NPCUtils">
+      <HintPath>lib\NPCUtils.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
