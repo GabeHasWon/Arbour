@@ -122,3 +122,18 @@ FloatingFallBoxItem: {
 	DisplayName: Music Box (Floating Fall)
 	Tooltip: ""
 }
+
+BirchBookcaseBlock: {
+	DisplayName: Birch Bookcase
+	Tooltip: ""
+}
+
+BirchCandelabraBlock: {
+	DisplayName: Birch Candelabra
+	Tooltip: ""
+}
+
+ArborLeafBlock: {
+	DisplayName: Arbor Leaf
+	Tooltip: ""
+}

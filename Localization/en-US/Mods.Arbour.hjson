@@ -57,3 +57,9 @@ Configs: {
 }
 
 InBiome: In Arbor
+
+MicrobirchKill: {
+	0: "{0} cut a tree right above their head."
+	1: "{0} discovered gravity...again."
+	2: A tree landed on {0}'s head.
+}

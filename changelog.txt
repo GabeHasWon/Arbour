@@ -1,3 +1,8 @@
-﻿1.2.2.4
-- Heavily reduced the spawn rate of Flightlings and Brush Tooths
-- Updated both banners, allowing them to sway in wind, be placed on more tiles, and be more accurate to vanilla's banners
+﻿1.2.2.5
+- Added Birch Bookcase, Candelabra
+- Fixed 1x1 Hay grass not growing naturally
+- Added a bunch more colorful Hay flowers
+- Adjusted Hay growth rates
+- Added Arbor Leaf block, expanded this to allow Microbirch to grow on it
+- Localized Microbirch death reasons
+- Added new dust to Arbor Grass, Arbor Leaf tiles

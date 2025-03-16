@@ -20,9 +20,11 @@ public class ArborGrass : ModTile
 		
 		AddMapEntry(new Color(198, 98, 43));
 		RegisterItemDrop(ItemID.DirtBlock);
-	}
 
-	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
+        DustType = ModContent.DustType<Dusts.LeafDust>();
+    }
+
+    public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		if (!fail) //Change self into dirt
 		{
@@ -53,13 +55,13 @@ public class ArborGrass : ModTile
 			NetMessage.SendTileSquare(-1, i, j, 3, TileChangeType.None);
 
 		//Spawn hay foliage
-		if (Main.rand.NextBool(60) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
+		if (Main.rand.NextBool(65) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x3>(), forceIfPossible: false))
 			return;
 
-		if (Main.rand.NextBool(48) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
+		if (Main.rand.NextBool(50) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x2>(), forceIfPossible: false))
 			return;
 
-		if (Main.rand.NextBool(40) && TileHelper.TryPlaceProperly(i, j - 1, ModContent.TileType<Hay1x1>(), forceIfPossible: false))
+		if (Main.rand.NextBool(20) && TileHelper.TryPlaceProperly(i, j, ModContent.TileType<Hay1x1>(), forceIfPossible: false))
 			return;
 	}
 }

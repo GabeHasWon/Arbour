@@ -1,4 +1,5 @@
-﻿using Arbour.Content.Tiles.Custom;
+﻿using Arbour.Content.Tiles.Blocks;
+using Arbour.Content.Tiles.Custom;
 using Terraria;
 using Terraria.Enums;
 using Terraria.GameContent.Metadata;
@@ -21,16 +22,15 @@ class MicrobirchSapling : ModTile
         TileID.Sets.SwaysInWindBasic[Type] = true;
 
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-        TileObjectData.newTile.CoordinateHeights = new int[1] { 16 };
+        TileObjectData.newTile.CoordinateHeights = [16];
         TileObjectData.newTile.RandomStyleRange = 3;
         TileObjectData.newTile.StyleHorizontal = true;
-        TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
+        TileObjectData.newTile.AnchorValidTiles = [ModContent.TileType<ArborGrass>(), ModContent.TileType<ArborLeaf>()];
         TileObjectData.newTile.AnchorBottom = default;
         TileObjectData.newTile.AnchorTop = new Terraria.DataStructures.AnchorData(AnchorType.SolidBottom | AnchorType.SolidTile, 1, 0);
         TileObjectData.addTile(Type);
 
         LocalizedText translation = CreateMapEntryName();
-        // translation.SetDefault("Sapling");
         AddMapEntry(new Microsoft.Xna.Framework.Color(132, 139, 235), translation);
     }
 

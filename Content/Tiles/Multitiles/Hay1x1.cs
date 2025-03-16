@@ -21,10 +21,10 @@ class Hay1x1 : ModTile
         TileID.Sets.SwaysInWindBasic[Type] = true;
 
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-        TileObjectData.newTile.RandomStyleRange = 5;
+        TileObjectData.newTile.RandomStyleRange = 10;
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
-        TileObjectData.newTile.CoordinateHeights = new int[1] { 18 };
+        TileObjectData.newTile.CoordinateHeights = [18];
         TileObjectData.addTile(Type);
 
         AddMapEntry(new Microsoft.Xna.Framework.Color(181, 152, 90));

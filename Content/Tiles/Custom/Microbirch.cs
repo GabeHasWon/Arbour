@@ -14,12 +14,16 @@ namespace Arbour.Content.Tiles.Custom;
 [TileTag(TileTags.NeedsTopAnchor)]
 internal class Microbirch : ModTile
 {
+    public static HashSet<int> ValidAnchors = [];
+
     private static bool KillingMicrobirch = false;
 
     const int TreeBottomFrame = 3 * 18;
 
     public override void SetStaticDefaults()
     {
+        ValidAnchors = [ModContent.TileType<ArborGrass>(), ModContent.TileType<ArborLeaf>()];
+
         DustType = DustID.Pumpkin;
         HitSound = SoundID.Dig;
 
@@ -32,7 +36,7 @@ internal class Microbirch : ModTile
 
     public override void NearbyEffects(int i, int j, bool closer)
     {
-        if (!WorldGen.SolidTile(i, j - 1) && Main.tile[i, j - 1].TileType != Type && Main.tile[i, j - 1].TileType != ModContent.TileType<ArborGrass>())
+        if (!WorldGen.SolidTile(i, j - 1) && Main.tile[i, j - 1].TileType != Type && !ValidAnchors.Contains(Main.tile[i, j - 1].TileType))
             WorldGen.KillTile(i, j);
     }
 
@@ -86,10 +90,10 @@ internal class Microbirch : ModTile
         {
             KillingMicrobirch = true;
 
-            List<TileDrawState> states = new List<TileDrawState>()
-            {
+            List<TileDrawState> states =
+            [
                 new(new Point(0, 0), new Point(me.TileFrameX, me.TileFrameY), Type)
-            };
+            ];
             int offset = 1;
 
             while (true)
@@ -144,6 +148,7 @@ internal class Microbirch : ModTile
             TileSwaySystem.DrawTreeSway(i, j, tex, new Rectangle(Main.tile[i, j - 1].TileFrameX / 18 * 50, 0, 48, 42), new Vector2(6, 0), new Vector2(24, 0), true, -1);
             return false;
         }
+
         return true;
     }
 }

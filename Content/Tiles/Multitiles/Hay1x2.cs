@@ -14,7 +14,7 @@ class Hay1x2 : ModTile
         Main.tileCut[Type] = true;
 
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
-        TileObjectData.newTile.CoordinateHeights = new int[2] { 16, 18 };
+        TileObjectData.newTile.CoordinateHeights = [16, 18];
         TileObjectData.newTile.RandomStyleRange = 2;
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.AnchorValidTiles = TileSets.ArborPlantAnchors;
