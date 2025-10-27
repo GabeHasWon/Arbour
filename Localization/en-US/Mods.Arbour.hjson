@@ -12,6 +12,7 @@ Tiles: {
 	ArborPylonTile.MapEntry: Arbor Pylon
 	StarlitWindsBox.MapEntry: Starlit Winds Box
 	FloatingFallBox.MapEntry: Floating Fall Box
+	BirchChest.MapEntry: Birch Chest
 }
 
 Biomes: {

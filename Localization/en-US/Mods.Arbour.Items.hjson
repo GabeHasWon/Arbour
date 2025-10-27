@@ -137,3 +137,8 @@ ArborLeafBlock: {
 	DisplayName: Arbor Leaf
 	Tooltip: ""
 }
+
+BirchChestBlock: {
+	DisplayName: Birch Chest Block
+	Tooltip: ""
+}

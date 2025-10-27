@@ -1,8 +1,3 @@
-﻿1.2.2.5
-- Added Birch Bookcase, Candelabra
-- Fixed 1x1 Hay grass not growing naturally
-- Added a bunch more colorful Hay flowers
-- Adjusted Hay growth rates
-- Added Arbor Leaf block, expanded this to allow Microbirch to grow on it
-- Localized Microbirch death reasons
-- Added new dust to Arbor Grass, Arbor Leaf tiles
+﻿1.2.2.6
+- Added Birch Chest
+- Slightly improved Arbor background floating islands

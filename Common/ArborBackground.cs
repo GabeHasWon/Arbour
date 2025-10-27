@@ -62,11 +62,14 @@ internal class ArborBackground : CustomSky
             if (!screenPositions.Any())
                 return;
 
+            int id = 0;
+
             foreach (var island in screenPositions)
             {
                 Vector2 pos = GetDrawPositionByDepth(island.Position, island.Depth);
                 Color color = GetColor(Main.ColorOfTheSkies, island.Depth);
-                spriteBatch.Draw(_backgrounds[island.Type].Value, pos - Main.Camera.UnscaledPosition, color);
+                SpriteEffects effect = id % 2 == 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+                spriteBatch.Draw(_backgrounds[island.Type].Value, pos - Main.Camera.UnscaledPosition, null, color, 0f, Vector2.Zero, 1f, effect, 0);
             }
         }
     }
